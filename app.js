@@ -95,6 +95,46 @@ app.get('/api/learning-stats', requireLogin, async (req, res) => {
   }
 });
 
+// Attendance API
+app.get('/api/attendance/today', requireLogin, async (req, res) => {
+  try {
+    const { attendanceManager } = require('./lib/attendanceManager');
+    const data = await attendanceManager.getAttendanceData();
+    res.json(data);
+  } catch (error) {
+    console.error('Attendance API error:', error);
+    res.json({ error: 'Failed to load attendance data' });
+  }
+});
+
+app.get('/api/attendance/summary', requireLogin, async (req, res) => {
+  try {
+    const { attendanceManager } = require('./lib/attendanceManager');
+    const { startDate, endDate } = req.query;
+    const summary = await attendanceManager.getAttendanceSummary(startDate, endDate);
+    res.json(summary);
+  } catch (error) {
+    console.error('Attendance summary API error:', error);
+    res.json({ error: 'Failed to load attendance summary' });
+  }
+});
+
+// Attendance Dashboard Page
+app.get('/attendance', requireLogin, async (req, res) => {
+  try {
+    const toast = req.session.toast || null;
+    delete req.session.toast;
+    
+    res.render('attendance', { 
+      toast: toast,
+      user: req.session.user || { username: 'Admin', role: 'admin' }
+    });
+  } catch (error) {
+    console.error('Attendance page error:', error);
+    res.status(500).render('404');
+  }
+});
+
 // Analytics routes
 app.get('/analytics/:category', requireLogin, async (req, res) => {
   try {

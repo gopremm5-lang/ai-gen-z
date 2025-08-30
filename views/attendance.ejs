@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Dashboard - Resbot AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+        }
+        .status-badge {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .status-mulai { background-color: #d4edda; color: #155724; }
+        .status-istirahat { background-color: #fff3cd; color: #856404; }
+        .status-masuk { background-color: #d1ecf1; color: #0c5460; }
+        .status-close { background-color: #f8d7da; color: #721c24; }
+        
+        .time-badge {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 600;
+        }
+        
+        .attendance-card {
+            border-left: 5px solid;
+        }
+        .attendance-card.active { border-left-color: #28a745; }
+        .attendance-card.break { border-left-color: #ffc107; }
+        .attendance-card.offline { border-left-color: #dc3545; }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">
+                <i class="fas fa-robot me-2"></i>Resbot AI Admin
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">
+                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/attendance">
+                            <i class="fas fa-clock me-1"></i>Attendance
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid mt-4">
+        <!-- Toast Notifications -->
+        <% if (toast) { %>
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+                <div class="toast show" role="alert">
+                    <div class="toast-header">
+                        <strong class="me-auto">
+                            <i class="fas fa-<%= toast.type === 'success' ? 'check-circle text-success' : 'exclamation-triangle text-warning' %> me-2"></i>
+                            Notification
+                        </strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">
+                        <%= toast.msg %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+        <!-- Header -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title mb-0">
+                            <i class="fas fa-clock text-primary me-2"></i>
+                            Attendance Dashboard
+                        </h4>
+                        <p class="card-text text-muted mb-0">Monitor kehadiran dan jam kerja admin</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Status -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-users text-success me-2"></i>
+                            Status Admin Hari Ini
+                            <span class="time-badge ms-2" id="current-time"></span>
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="today-attendance">
+                            <div class="text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading attendance data...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Summary -->
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-chart-line text-info me-2"></i>
+                            Weekly Attendance Summary
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="attendanceChart" height="100"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-trophy text-warning me-2"></i>
+                            Admin Performance
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="admin-performance">
+                            <div class="text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading performance data...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Commands Guide -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">
+                            <i class="fas fa-terminal text-secondary me-2"></i>
+                            Attendance Commands (via WhatsApp)
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6 class="text-success">🟢 Mulai Kerja</h6>
+                                <code>mulai</code><br>
+                                <small class="text-muted">Absen masuk kerja</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h6 class="text-warning">🟡 Istirahat</h6>
+                                <code>istirahat</code><br>
+                                <small class="text-muted">Mulai break</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h6 class="text-info">🔵 Kembali</h6>
+                                <code>masuk</code><br>
+                                <small class="text-muted">Kembali dari break</small>
+                            </div>
+                            <div class="col-md-3">
+                                <h6 class="text-danger">🔴 Selesai</h6>
+                                <code>close</code><br>
+                                <small class="text-muted">Selesai kerja</small>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h6 class="text-primary">📊 Cek Status</h6>
+                                <code>status absen</code><br>
+                                <small class="text-muted">Lihat status hari ini</small>
+                            </div>
+                            <div class="col-md-6">
+                                <h6 class="text-secondary">📋 Menu Admin</h6>
+                                <code>admin menu</code><br>
+                                <small class="text-muted">Lihat semua commands</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Update current time
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleString('id-ID', {
+                timeZone: 'Asia/Jakarta',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            });
+            document.getElementById('current-time').textContent = timeString + ' WIB';
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // Load today's attendance
+        function loadTodayAttendance() {
+            fetch('/api/attendance/today')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('today-attendance');
+                    
+                    if (data.error || !Array.isArray(data) || data.length === 0) {
+                        container.innerHTML = `
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Belum ada admin yang absen hari ini
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    let html = '<div class="row">';
+                    
+                    data.forEach(record => {
+                        const statusClass = {
+                            'mulai': 'active',
+                            'masuk': 'active', 
+                            'istirahat': 'break',
+                            'close': 'offline'
+                        }[record.currentStatus] || 'offline';
+                        
+                        const statusIcon = {
+                            'mulai': '💪',
+                            'masuk': '💪',
+                            'istirahat': '🍽️',
+                            'close': '🏁'
+                        }[record.currentStatus] || '❓';
+                        
+                        const workTime = record.totalWorkTime || 0;
+                        const workHours = Math.floor(workTime / 60);
+                        const workMinutes = workTime % 60;
+                        
+                        html += `
+                            <div class="col-md-6 col-lg-4 mb-3">
+                                <div class="card attendance-card ${statusClass}">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start">
+                                            <div>
+                                                <h6 class="card-title mb-1">${record.adminName}</h6>
+                                                <small class="text-muted">${record.adminNumber}</small>
+                                            </div>
+                                            <span class="status-badge status-${record.currentStatus}">
+                                                ${statusIcon} ${record.currentStatus.toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <hr class="my-2">
+                                        <div class="row text-center">
+                                            <div class="col-6">
+                                                <small class="text-muted">Masuk</small><br>
+                                                <strong>${record.clockIn || '-'}</strong>
+                                            </div>
+                                            <div class="col-6">
+                                                <small class="text-muted">Keluar</small><br>
+                                                <strong>${record.clockOut || '-'}</strong>
+                                            </div>
+                                        </div>
+                                        <div class="text-center mt-2">
+                                            <small class="text-muted">Total Kerja</small><br>
+                                            <strong class="text-primary">${workHours}j ${workMinutes}m</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    html += '</div>';
+                    container.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading attendance:', error);
+                    document.getElementById('today-attendance').innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Gagal memuat data absensi
+                        </div>
+                    `;
+                });
+        }
+
+        // Load attendance summary and chart
+        function loadAttendanceSummary() {
+            fetch('/api/attendance/summary')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        return;
+                    }
+                    
+                    // Update admin performance
+                    const performanceContainer = document.getElementById('admin-performance');
+                    let performanceHtml = '';
+                    
+                    if (data.adminStats && Object.keys(data.adminStats).length > 0) {
+                        for (const [adminNumber, stats] of Object.entries(data.adminStats)) {
+                            const avgHours = Math.floor(stats.avgWorkTime / 60);
+                            const avgMinutes = stats.avgWorkTime % 60;
+                            
+                            performanceHtml += `
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <div>
+                                        <strong>${stats.name}</strong><br>
+                                        <small class="text-muted">${stats.totalDays} hari kerja</small>
+                                    </div>
+                                    <div class="text-end">
+                                        <span class="badge bg-primary">${avgHours}j ${avgMinutes}m</span><br>
+                                        <small class="text-muted">rata-rata</small>
+                                    </div>
+                                </div>
+                                <hr class="my-2">
+                            `;
+                        }
+                    } else {
+                        performanceHtml = '<p class="text-muted text-center">Belum ada data performance</p>';
+                    }
+                    
+                    performanceContainer.innerHTML = performanceHtml;
+                    
+                    // Create chart
+                    if (data.dailyStats) {
+                        const dates = Object.keys(data.dailyStats).slice(-7);
+                        const workTimes = dates.map(date => {
+                            const dayData = data.dailyStats[date];
+                            return Math.round(dayData.avgWorkTime / 60 * 10) / 10; // Hours with 1 decimal
+                        });
+                        
+                        const ctx = document.getElementById('attendanceChart').getContext('2d');
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: dates.map(date => {
+                                    const d = new Date(date);
+                                    return d.toLocaleDateString('id-ID', { month: 'short', day: 'numeric' });
+                                }),
+                                datasets: [{
+                                    label: 'Rata-rata Jam Kerja',
+                                    data: workTimes,
+                                    borderColor: '#667eea',
+                                    backgroundColor: 'rgba(102, 126, 234, 0.1)',
+                                    tension: 0.4,
+                                    fill: true
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                },
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        title: {
+                                            display: true,
+                                            text: 'Jam'
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error loading summary:', error);
+                });
+        }
+
+        // Auto dismiss toast
+        setTimeout(() => {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach(toast => {
+                const bsToast = new bootstrap.Toast(toast);
+                bsToast.hide();
+            });
+        }, 5000);
+
+        // Load data on page load
+        loadTodayAttendance();
+        loadAttendanceSummary();
+        
+        // Auto refresh every 30 seconds
+        setInterval(loadTodayAttendance, 30000);
+    </script>
+</body>
+</html>
