@@ -31,7 +31,7 @@ const config = {
     // Core Settings
     AutoUpdate          : process.env.AUTO_UPDATE || 'off',
     API_KEY             : process.env.API_KEY || 'betataster1', 
-    GEMINI_API_KEY      : process.env.GEMINI_API_KEY || 'AIzaSyAQXZcAUQB4Lr4dURTdi3vYUlzkc_MDTK4',
+    GEMINI_API_KEY      : process.env.GEMINI_API_KEY || '', // Remove hardcoded API key for security
     
     // Bot Configuration
     phone_number_bot    : process.env.BOT_PHONE || '6281391414396',
