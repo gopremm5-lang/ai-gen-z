@@ -119,9 +119,14 @@ app.get('/api/attendance/summary', requireLogin, async (req, res) => {
   }
 });
 
-// Attendance Dashboard Page
+// Attendance Dashboard Page (Owner Only)
 app.get('/attendance', requireLogin, async (req, res) => {
   try {
+    // Only owner (admin role) can access attendance dashboard
+    if (req.session.user?.role !== 'admin') {
+      return res.status(403).render('404');
+    }
+    
     const toast = req.session.toast || null;
     delete req.session.toast;
     
