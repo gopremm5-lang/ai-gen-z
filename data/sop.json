@@ -38,5 +38,102 @@
     "response": [
       "Tenang, Kak. Silakan jelaskan kronologinya biar saya carikan solusinya sekalian kirim nomor order dan screenshot masalahnya"
     ]
+  },
+  {
+    "id": "sop003",
+    "kasus": "follow_up_purchase",
+    "trigger": [
+      "belum dapet email",
+      "belum terima akun",
+      "sudah transfer tapi",
+      "kemarin beli tapi",
+      "order kemarin"
+    ],
+    "response": [
+      "Tenang, Kak. Untuk follow-up order yang sudah dibayar, mohon kirim nomor order atau bukti transfer ke admin di wa.me/6289630375723. Tim kami akan cek status dan proses segera ya!"
+    ]
+  },
+  {
+    "id": "sop004", 
+    "kasus": "complex_problem",
+    "trigger": [
+      "udah 3 hari",
+      "dari kemarin",
+      "masalah terus",
+      "gimana dong",
+      "gimana nih"
+    ],
+    "response": [
+      "Maaf atas ketidaknyamanan ini, Kak. Untuk masalah yang sudah berlangsung lama, mohon langsung chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi masalah, dan screenshot. Tim kami akan prioritaskan penyelesaiannya."
+    ]
+  },
+  {
+    "id": "sop005",
+    "kasus": "price_complaint",
+    "trigger": [
+      "mahal banget",
+      "kok mahal",
+      "harga kemahalan",
+      "terlalu mahal"
+    ],
+    "response": [
+      "Saya paham concern Kak soal harga. Vylozzone memberikan value terbaik dengan garansi penuh dan kualitas premium. Untuk penawaran khusus atau paket hemat, bisa chat admin di wa.me/6289630375723 ya! 😊"
+    ]
+  },
+  {
+    "id": "sop006",
+    "kasus": "security_issues",
+    "trigger": [
+      "dibajak",
+      "akun dicuri",
+      "kena hack",
+      "password berubah",
+      "ada yang pakai akun saya"
+    ],
+    "response": [
+      "🚨 Untuk masalah keamanan akun, segera chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi kejadian, dan screenshot. Tim security kami akan handle prioritas tinggi!"
+    ]
+  },
+  {
+    "id": "sop007", 
+    "kasus": "refund_request",
+    "trigger": [
+      "mau refund",
+      "minta refund",
+      "kembalikan uang",
+      "tidak sesuai",
+      "batal order"
+    ],
+    "response": [
+      "Untuk request refund, mohon chat admin di wa.me/6289630375723 dengan: nomor order, alasan refund, dan screenshot kendala (jika ada). Tim kami akan review sesuai kebijakan garansi ya, Kak."
+    ]
+  },
+  {
+    "id": "sop008",
+    "kasus": "account_suspension", 
+    "trigger": [
+      "akun suspend",
+      "akun diblokir",
+      "akun terkunci",
+      "account suspended",
+      "kena banned"
+    ],
+    "response": [
+      "Untuk masalah akun yang suspend/diblokir, langsung chat admin di wa.me/6289630375723 dengan nomor order dan screenshot. Tim kami akan bantu proses recovery atau replacement sesuai garansi."
+    ]
+  },
+  {
+    "id": "sop009",
+    "kasus": "serious_complaint",
+    "trigger": [
+      "scam",
+      "penipu",
+      "bohong",
+      "jelek banget",
+      "admin scam"
+    ],
+    "response": [
+      "Maaf jika ada ketidaknyamanan, Kak. Vylozzone berkomitmen memberikan layanan terbaik. Untuk keluhan serius, mohon langsung hubungi admin di wa.me/6289630375723 agar bisa ditindaklanjuti dengan proper. Terima kasih atas feedback-nya."
+    ]
   }
 ]

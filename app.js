@@ -18,10 +18,14 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(session({
-  secret: process.env.SESSION_SECRET || 'vylozzone_secret_12345',
+  secret: process.env.SESSION_SECRET || crypto.randomBytes(32).toString('hex'),
   resave: false,
-  saveUninitialized: true,
-  cookie: { maxAge: 8 * 60 * 60 * 1000 }
+  saveUninitialized: false, // Better security
+  cookie: { 
+    maxAge: 8 * 60 * 60 * 1000,
+    httpOnly: true, // Prevent XSS
+    secure: process.env.NODE_ENV === 'production' // HTTPS only in production
+  }
 }));
 
 // ================== ROUTES ==================
@@ -35,6 +39,61 @@ app.use('/promo', require('./routes/promo'));
 app.use('/produk', require('./routes/produk'));
 app.use('/claim', require('./routes/claim'));
 app.use('/moderator', require('./routes/moderator'));
+
+// ================== API ENDPOINTS ==================
+// Dashboard Orders API
+app.get('/api/dashboard-orders', requireLogin, async (req, res) => {
+  try {
+    const [buyers, claims] = await Promise.all([
+      loadJson("buyers.json"),
+      loadJson("log_claim.json")
+    ]);
+    
+    // Generate last 7 days data
+    const last7Days = [];
+    const orderCounts = [];
+    
+    for (let i = 6; i >= 0; i--) {
+      const date = new Date();
+      date.setDate(date.getDate() - i);
+      const dateStr = date.toISOString().split('T')[0];
+      
+      // Count orders for this date
+      const dayOrders = Array.isArray(buyers) ? 
+        buyers.filter(buyer => 
+          buyer.data && buyer.data.some(transaction => 
+            transaction.dateGiven === dateStr
+          )
+        ).length : 0;
+      
+      last7Days.push(date.toLocaleDateString('id-ID', { month: 'short', day: 'numeric' }));
+      orderCounts.push(dayOrders);
+    }
+    
+    res.json({
+      labels: last7Days,
+      orders: orderCounts
+    });
+  } catch (error) {
+    console.error('Dashboard orders API error:', error);
+    res.json({
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      orders: [0, 0, 0, 0, 0, 0, 0]
+    });
+  }
+});
+
+// Learning Stats API
+app.get('/api/learning-stats', requireLogin, async (req, res) => {
+  try {
+    const { learningManager } = require('./lib/learningManager');
+    const stats = await learningManager.getStats();
+    res.json(stats);
+  } catch (error) {
+    console.error('Learning stats API error:', error);
+    res.json({ error: 'Failed to load learning stats' });
+  }
+});
 
 // Analytics routes
 app.get('/analytics/:category', requireLogin, async (req, res) => {
@@ -290,7 +349,7 @@ app.use((error, req, res, next) => {
   try {
     await fs.mkdir(produkDir, { recursive: true });
     app.listen(PORT, () => {
-      console.log(`Admin Panel running on http://31.220.108.145:${PORT}/login`);
+      console.log(`Admin Panel running on http://localhost:${PORT}/login`);
       // open(`http://localhost:${PORT}/login`); // Boleh dihapus kalau di VPS
     });
   } catch (error) {

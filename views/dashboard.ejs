@@ -300,11 +300,35 @@
                     <div class="card-header bg-transparent border-0 pb-0">
                         <h5 class="card-title mb-0">
                             <i class="fas fa-chart-bar text-success me-2"></i>
-                            Statistik Order
+                            Statistik Order (7 Hari)
                         </h5>
                     </div>
                     <div class="card-body">
                         <canvas id="chartOrder" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning System Statistics -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-transparent border-0 pb-0">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-brain text-info me-2"></i>
+                            Learning System Status
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="learning-stats-container">
+                            <div class="text-center">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading learning statistics...</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -323,33 +347,132 @@
             });
         }, 5000);
 
-        // Chart
-        new Chart(document.getElementById('chartOrder').getContext('2d'), {
-            type: 'bar',
-            data: {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
-                datasets: [{
-                    label: 'Order',
-                    data: [15, 23, 17, 32, 28, 44],
-                    backgroundColor: '#667eea',
-                    borderRadius: 5
-                }]
-            },
-            options: { 
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: false
+        // Load real order data from API
+        fetch('/api/dashboard-orders')
+            .then(response => response.json())
+            .then(data => {
+                new Chart(document.getElementById('chartOrder').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels || ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Orders',
+                            data: data.orders || [0, 0, 0, 0, 0, 0, 0],
+                            backgroundColor: '#667eea',
+                            borderRadius: 5
+                        }]
+                    },
+                    options: { 
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
                     }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true
+                });
+            })
+            .catch(error => {
+                console.error('Error loading order data:', error);
+                // Fallback to dummy data
+                new Chart(document.getElementById('chartOrder').getContext('2d'), {
+                    type: 'bar',
+                    data: {
+                        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                        datasets: [{
+                            label: 'Orders',
+                            data: [0, 0, 0, 0, 0, 0, 0],
+                            backgroundColor: '#667eea',
+                            borderRadius: 5
+                        }]
+                    },
+                    options: { 
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
                     }
+                });
+            });
+
+        // Load Learning Statistics
+        fetch('/api/learning-stats')
+            .then(response => response.json())
+            .then(stats => {
+                const container = document.getElementById('learning-stats-container');
+                if (stats.error) {
+                    container.innerHTML = `
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Learning system is initializing...
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML = `
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="h4 text-primary">${stats.nlp?.knowledgeBase || 0}</div>
+                                    <small class="text-muted">Knowledge Entries</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="h4 text-success">${stats.nlp?.patterns || 0}</div>
+                                    <small class="text-muted">Learned Patterns</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="h4 text-info">${stats.conversations || 0}</div>
+                                    <small class="text-muted">Conversations</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="h4 ${stats.initialized ? 'text-success' : 'text-warning'}">
+                                        ${stats.initialized ? '✅' : '⏳'}
+                                    </div>
+                                    <small class="text-muted">${stats.initialized ? 'Ready' : 'Loading'}</small>
+                                </div>
+                            </div>
+                        </div>
+                        ${stats.lastActivity ? `
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <small class="text-muted">
+                                    <i class="fas fa-clock me-1"></i>
+                                    Last Activity: ${new Date(stats.lastActivity).toLocaleString('id-ID')}
+                                </small>
+                            </div>
+                        </div>
+                        ` : ''}
+                    `;
                 }
-            }
-        });
+            })
+            .catch(error => {
+                console.error('Error loading learning stats:', error);
+                document.getElementById('learning-stats-container').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        Failed to load learning statistics
+                    </div>
+                `;
+            });
     </script>
 </body>
 </html>
