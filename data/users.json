@@ -1,0 +1,31 @@
+{
+  "admin": {
+    "password": "240be518fabd2724ddb6f04eeb1da5967448d7e831c08c8fa822809f74c720a9",
+    "role": "admin",
+    "permissions": [
+      "dashboard.*",
+      "users.*",
+      "stock.*",
+      "faq.*",
+      "sop.*",
+      "promo.*",
+      "produk.*",
+      "claim.*",
+      "buyers.*",
+      "blacklist.*"
+    ]
+  },
+  "moderator": {
+    "password": "09fbcc458fb3430db7ec54ee95635e7fbc06ccfd982b49c55ec53ab8ac2397e7",
+    "role": "moderator",
+    "permissions": [
+      "dashboard.read",
+      "stock.read",
+      "faq.*",
+      "sop.*",
+      "promo.read",
+      "produk.read",
+      "claim.read"
+    ]
+  }
+}
