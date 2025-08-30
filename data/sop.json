@@ -1,0 +1,42 @@
+[
+  {
+    "id": "sop001",
+    "kasus": "claim_garansi",
+    "trigger": [
+      "akun tidak bisa login",
+      "error login",
+      "expired",
+      "butuh otp",
+      "akun terkunci"
+    ],
+    "response": [
+      "Tenang, Kak. Silakan kirim nomor order dan screenshot kendalanya. Tim kami bantu proses sesuai SOP garansi.",
+      "Jika akun tidak bisa login atau butuh OTP, kirim nomor order, deskripsi kendala, dan screenshot ke sini. Kami bantu sampai selesai, ya Kak."
+    ]
+  },
+  {
+    "id": "sop002",
+    "kasus": "out_of_topic",
+    "trigger": [
+      "curhat",
+      "ngajak ngobrol",
+      "iseng",
+      "pertanyaan pribadi",
+      "di luar produk"
+    ],
+    "response": [
+      "Maaf Kak, CS Vylozzone hanya bisa membantu seputar order, kendala, dan garansi produk digital. Mohon ajukan pertanyaan sesuai layanan ya.",
+      "Bot ini hanya melayani pertanyaan terkait Vylozzone. Pertanyaan di luar topik tidak bisa kami respon. Terima kasih atas pengertiannya."
+    ]
+  },
+  {
+    "trigger": [
+      "netflix error",
+      "incorect",
+      "gabisa login netflix"
+    ],
+    "response": [
+      "Tenang, Kak. Silakan jelaskan kronologinya biar saya carikan solusinya sekalian kirim nomor order dan screenshot masalahnya"
+    ]
+  }
+]

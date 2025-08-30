@@ -1,0 +1,24 @@
+{
+  "id": "incremental_2025-08-17T23-41-36-313Z",
+  "type": "incremental",
+  "timestamp": 1755474096314,
+  "baseTimestamp": 1755459696354,
+  "files": [
+    "data/home/container/backups/incremental_2025-08-17T23-31-12-481Z/manifest.json",
+    "data/home/container/backups/incremental_2025-08-17T23-31-30-039Z/manifest.json",
+    "data/reports/monitoring_report_2025-08-17T20.json",
+    "data/reports/monitoring_report_2025-08-17T21.json",
+    "data/reports/monitoring_report_2025-08-17T22.json",
+    "data/reports/monitoring_report_2025-08-17T23.json"
+  ],
+  "checksums": {
+    "data/home/container/backups/incremental_2025-08-17T23-31-12-481Z/manifest.json": "15486cc572fd9dd0d721785d15c04b12d59436383452316fb7f031295abe9a5a",
+    "data/home/container/backups/incremental_2025-08-17T23-31-30-039Z/manifest.json": "d207dcf8e7e6f203fd0a4b41d7ebb2eb1f06fefdea08e9bc64d2d873e7f7f6ec",
+    "data/reports/monitoring_report_2025-08-17T20.json": "0718b823b91398323cd8535d915eaeaae56efaa2ccb5f41984717a4f6bdcad18",
+    "data/reports/monitoring_report_2025-08-17T21.json": "b7510edb09397faa1b5877749bfa8e0fa3fe3ed46d1f35564d7a53174cf83124",
+    "data/reports/monitoring_report_2025-08-17T22.json": "bc0aaac7212a5b4a363874b629b970066239deea1a53f913a50f58b543d9cd85",
+    "data/reports/monitoring_report_2025-08-17T23.json": "4029ee5484d732d53ee4d1f307f6a26da1b55f4f4d9c6f8c0172ed1416aa27e7"
+  },
+  "size": 14516,
+  "changedFiles": 6
+}

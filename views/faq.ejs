@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Resbot AI Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">
+                <i class="fas fa-robot me-2"></i>
+                Resbot AI Admin
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/dashboard">
+                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/faq">
+                            <i class="fas fa-question-circle me-1"></i>FAQ
+                        </a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <i class="fas fa-sign-out-alt me-1"></i>Logout
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <!-- Toast Notifications -->
+        <% if (toast) { %>
+            <div class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+                <div class="toast show" role="alert">
+                    <div class="toast-header">
+                        <i class="fas fa-<%= toast.type === 'error' ? 'exclamation-triangle text-danger' : toast.type === 'success' ? 'check-circle text-success' : 'info-circle text-info' %> me-2"></i>
+                        <strong class="me-auto">Notifikasi</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">
+                        <%= toast.msg %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h2><i class="fas fa-question-circle text-primary me-2"></i>FAQ Management</h2>
+                    <a href="/dashboard" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-1"></i>Kembali
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add/Edit FAQ Form -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-plus-circle me-2"></i>Tambah FAQ Baru
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/faq/save">
+                            <input type="hidden" name="idx" id="editIdx" value="">
+                            
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="question" class="form-label">Pertanyaan <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" id="question" name="question" 
+                                           placeholder="Masukkan pertanyaan FAQ" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label for="keywords" class="form-label">Keywords <small class="text-muted">(pisahkan dengan koma)</small></label>
+                                    <input type="text" class="form-control" id="keywords" name="keywords" 
+                                           placeholder="contoh: login, masuk, akun">
+                                    <div class="form-text">Keywords untuk mendeteksi pertanyaan serupa dari user</div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="answer" class="form-label">Jawaban <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="answer" name="answer" rows="4" 
+                                          placeholder="Masukkan jawaban untuk FAQ ini" required></textarea>
+                            </div>
+                            
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save me-1"></i>Simpan FAQ
+                                </button>
+                                <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                                    <i class="fas fa-times me-1"></i>Reset
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ List -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-list me-2"></i>Daftar FAQ
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <% if (faq && faq.length > 0) { %>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th width="5%">No</th>
+                                            <th width="25%">Pertanyaan</th>
+                                            <th width="20%">Keywords</th>
+                                            <th width="35%">Jawaban</th>
+                                            <th width="15%">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% faq.forEach((item, i) => { %>
+                                            <tr>
+                                                <td><%= i+1 %></td>
+                                                <td>
+                                                    <strong><%= item.question %></strong>
+                                                </td>
+                                                <td>
+                                                    <% if (item.keyword && Array.isArray(item.keyword)) { %>
+                                                        <% item.keyword.forEach(kw => { %>
+                                                            <span class="badge bg-secondary me-1"><%= kw %></span>
+                                                        <% }) %>
+                                                    <% } else { %>
+                                                        <span class="text-muted">-</span>
+                                                    <% } %>
+                                                </td>
+                                                <td>
+                                                    <div style="max-height: 100px; overflow-y: auto;">
+                                                        <%= item.answer %>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group" role="group">
+                                                        <button type="button" class="btn btn-sm btn-outline-primary edit-btn" 
+                                                                data-idx="<%= i %>"
+                                                                data-question="<%= item.question %>"
+                                                                data-answer="<%= item.answer %>"
+                                                                data-keywords="<%= item.keyword ? item.keyword.join(', ') : '' %>">
+                                                            <i class="fas fa-edit"></i>
+                                                        </button>
+                                                        <form method="post" action="/faq/delete" style="display:inline">
+                                                            <input type="hidden" name="idx" value="<%= i %>">
+                                                            <button type="submit" class="btn btn-sm btn-outline-danger" 
+                                                                    onclick="return confirm('Yakin ingin menghapus FAQ ini?')">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        <% }) %>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <% } else { %>
+                            <div class="text-center py-5">
+                                <i class="fas fa-question-circle fa-3x text-muted mb-3"></i>
+                                <h5 class="text-muted">Belum ada FAQ</h5>
+                                <p class="text-muted">Tambahkan FAQ pertama untuk membantu bot menjawab pertanyaan user</p>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Auto dismiss toast after 5 seconds
+        setTimeout(() => {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach(toast => {
+                const bsToast = new bootstrap.Toast(toast);
+                bsToast.hide();
+            });
+        }, 5000);
+
+        // Add event listeners for edit buttons
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.edit-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    const idx = this.dataset.idx;
+                    const question = this.dataset.question;
+                    const answer = this.dataset.answer;
+                    const keywords = this.dataset.keywords;
+                    
+                    document.getElementById('editIdx').value = idx;
+                    document.getElementById('question').value = question;
+                    document.getElementById('answer').value = answer;
+                    document.getElementById('keywords').value = keywords;
+                    
+                    // Scroll to form
+                    document.querySelector('.card').scrollIntoView({ behavior: 'smooth' });
+                    
+                    // Change button text
+                    document.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-save me-1"></i>Update FAQ';
+                });
+            });
+        });
+
+        function resetForm() {
+            document.getElementById('editIdx').value = '';
+            document.getElementById('question').value = '';
+            document.getElementById('answer').value = '';
+            document.getElementById('keywords').value = '';
+            
+            // Reset button text
+            document.querySelector('button[type="submit"]').innerHTML = '<i class="fas fa-save me-1"></i>Simpan FAQ';
+        }
+    </script>
+</body>
+</html>

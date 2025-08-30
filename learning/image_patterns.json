@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1756481852665,
+    "sender": "6285750750522@s.whatsapp.net",
+    "imagePath": "/home/container/tmp/images/image_1756481852006.jpg",
+    "analysis": {
+      "success": true,
+      "analysis": {
+        "id": 1756481852663,
+        "timestamp": "2025-08-29T15:37:32.663Z",
+        "imagePath": "image_1756481852006.jpg",
+        "imageInfo": {
+          "width": 1080,
+          "height": 324,
+          "format": "jpeg",
+          "channels": 3,
+          "density": 72,
+          "size": 19846,
+          "aspectRatio": 3.3333333333333335
+        },
+        "isScreenshot": {
+          "isScreenshot": false,
+          "confidence": 0.2,
+          "type": "unknown"
+        },
+        "colorAnalysis": {
+          "averageColor": {
+            "r": 242,
+            "g": 242,
+            "b": 242
+          },
+          "brightness": 242,
+          "isDark": false,
+          "isReddish": false,
+          "dominantColor": "white"
+        },
+        "hasText": {
+          "hasText": true,
+          "confidence": 0.8343749999999999,
+          "textType": "mobile_app"
+        },
+        "context": {
+          "sender": "6285750750522@s.whatsapp.net",
+          "caption": ""
+        },
+        "confidence": 0.7999999999999999,
+        "response": {
+          "text": "Terima kasih sudah mengirim gambar. Bisa dijelaskan terkait gambar ini? Ada yang perlu saya bantu?",
+          "category": "image",
+          "confidence": 0.7999999999999999,
+          "suggestions": []
+        }
+      },
+      "response": "Terima kasih sudah mengirim gambar. Bisa dijelaskan terkait gambar ini? Ada yang perlu saya bantu?"
+    },
+    "timestamp": "2025-08-29T15:37:32.665Z"
+  }
+]

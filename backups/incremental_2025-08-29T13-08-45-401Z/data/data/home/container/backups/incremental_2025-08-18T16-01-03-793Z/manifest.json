@@ -1,0 +1,20 @@
+{
+  "id": "incremental_2025-08-18T16-01-03-793Z",
+  "type": "incremental",
+  "timestamp": 1755532863798,
+  "baseTimestamp": 1755518463807,
+  "files": [
+    "data/reports/monitoring_report_2025-08-18T13.json",
+    "data/reports/monitoring_report_2025-08-18T14.json",
+    "data/reports/monitoring_report_2025-08-18T15.json",
+    "data/reports/monitoring_report_2025-08-18T16.json"
+  ],
+  "checksums": {
+    "data/reports/monitoring_report_2025-08-18T13.json": "3f8efb937c589a6dc7910acb801703e7fb32814f9f579c6660ce285eb7c91d26",
+    "data/reports/monitoring_report_2025-08-18T14.json": "6ca3bff26ecabbe9cf99de7735f20494c101bd0fa4fb4ecdb1b130ccd424403f",
+    "data/reports/monitoring_report_2025-08-18T15.json": "411c4f2a768a73e7a41ebb820124a83bbb055e891f1d04a3b998864325728586",
+    "data/reports/monitoring_report_2025-08-18T16.json": "503f638388ec3a5b922741606276f99045829afdc07a45109b071dffce4bed4f"
+  },
+  "size": 11439,
+  "changedFiles": 4
+}

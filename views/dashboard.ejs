@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Resbot AI Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .stat-card {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+        }
+        .stat-card.produk { --gradient-start: #667eea; --gradient-end: #764ba2; }
+        .stat-card.promo { --gradient-start: #f093fb; --gradient-end: #f5576c; }
+        .stat-card.faq { --gradient-start: #4facfe; --gradient-end: #00f2fe; }
+        .stat-card.sop { --gradient-start: #43e97b; --gradient-end: #38f9d7; }
+        .stat-card.claim { --gradient-start: #fa709a; --gradient-end: #fee140; }
+        
+        .stat-icon {
+            font-size: 3rem;
+            opacity: 0.8;
+        }
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+        .welcome-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .btn-action {
+            border-radius: 10px;
+            padding: 8px 20px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .btn-action:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/dashboard">
+                <i class="fas fa-robot me-2"></i>
+                Resbot AI Admin
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/dashboard">
+                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-cogs me-1"></i>Kelola Data
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/produk"><i class="fas fa-box me-2"></i>Produk</a></li>
+                            <li><a class="dropdown-item" href="/promo"><i class="fas fa-tags me-2"></i>Promo</a></li>
+                            <li><a class="dropdown-item" href="/faq"><i class="fas fa-question-circle me-2"></i>FAQ</a></li>
+                            <li><a class="dropdown-item" href="/sop"><i class="fas fa-file-alt me-2"></i>SOP</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/stock"><i class="fas fa-warehouse me-2"></i>Stock</a></li>
+                            <li><a class="dropdown-item" href="/claim"><i class="fas fa-clipboard-list me-2"></i>Claim</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-users me-1"></i>User Management
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/buyers"><i class="fas fa-shopping-cart me-2"></i>Buyers</a></li>
+                            <li><a class="dropdown-item" href="/blacklist"><i class="fas fa-ban me-2"></i>Blacklist</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>
+                            <% if (typeof user !== 'undefined' && user) { %>
+                                <%= user.username %>
+                            <% } else { %>
+                                Admin
+                            <% } %>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="/logout"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4">
+        <!-- Toast Notifications -->
+        <% if (toast) { %>
+            <div class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+                <div class="toast show" role="alert">
+                    <div class="toast-header">
+                        <i class="fas fa-<%= toast.type === 'error' ? 'exclamation-triangle text-danger' : toast.type === 'success' ? 'check-circle text-success' : 'info-circle text-info' %> me-2"></i>
+                        <strong class="me-auto">Notifikasi</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">
+                        <%= toast.msg %>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+
+        <!-- Welcome Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card welcome-card">
+                    <div class="card-body p-4">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <h2 class="mb-2">
+                                    <i class="fas fa-tachometer-alt me-2"></i>
+                                    Dashboard Admin Panel
+                                </h2>
+                                <p class="mb-0 opacity-75">
+                                    Resbot AI v1.0.5 - WhatsApp Bot Management System
+                                    <% if (typeof user !== 'undefined' && user) { %>
+                                        <span class="badge bg-light text-dark ms-2"><%= user.role ? user.role.toUpperCase() : 'ADMIN' %></span>
+                                    <% } %>
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-end">
+                                <div class="d-flex justify-content-end align-items-center">
+                                    <div class="me-3">
+                                        <small class="d-block opacity-75">Status Bot</small>
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-circle me-1"></i>Online
+                                        </span>
+                                    </div>
+                                    <i class="fas fa-robot" style="font-size: 3rem; opacity: 0.3;"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="row mb-4">
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="card stat-card produk">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-box stat-icon mb-3"></i>
+                        <div class="stat-number"><%= stats.produk || 0 %></div>
+                        <div class="opacity-75">Produk</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="card stat-card promo">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-tags stat-icon mb-3"></i>
+                        <div class="stat-number"><%= stats.promo || 0 %></div>
+                        <div class="opacity-75">Promo</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="card stat-card faq">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-question-circle stat-icon mb-3"></i>
+                        <div class="stat-number"><%= stats.faq || 0 %></div>
+                        <div class="opacity-75">FAQ</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="card stat-card sop">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-file-alt stat-icon mb-3"></i>
+                        <div class="stat-number"><%= stats.sop || 0 %></div>
+                        <div class="opacity-75">SOP</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="card stat-card claim">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-clipboard-list stat-icon mb-3"></i>
+                        <div class="stat-number"><%= stats.claim || 0 %></div>
+                        <div class="opacity-75">Claim</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-4 col-sm-6 mb-3">
+                <div class="card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <div class="card-body text-center p-4">
+                        <i class="fas fa-chart-line stat-icon mb-3"></i>
+                        <div class="stat-number">100%</div>
+                        <div class="opacity-75">Uptime</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions & Chart -->
+        <div class="row">
+            <div class="col-lg-8 mb-4">
+                <div class="card">
+                    <div class="card-header bg-transparent border-0 pb-0">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-bolt text-primary me-2"></i>
+                            Quick Actions
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3 col-sm-6">
+                                <a href="/produk" class="btn btn-outline-primary btn-action w-100">
+                                    <i class="fas fa-box mb-2 d-block"></i>
+                                    Kelola Produk
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a href="/promo" class="btn btn-outline-success btn-action w-100">
+                                    <i class="fas fa-tags mb-2 d-block"></i>
+                                    Kelola Promo
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a href="/faq" class="btn btn-outline-info btn-action w-100">
+                                    <i class="fas fa-question-circle mb-2 d-block"></i>
+                                    Kelola FAQ
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a href="/claim" class="btn btn-outline-warning btn-action w-100">
+                                    <i class="fas fa-clipboard-list mb-2 d-block"></i>
+                                    Kelola Claim
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a href="/stock" class="btn btn-outline-secondary btn-action w-100">
+                                    <i class="fas fa-warehouse mb-2 d-block"></i>
+                                    Kelola Stock
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a href="/buyers" class="btn btn-outline-primary btn-action w-100">
+                                    <i class="fas fa-users mb-2 d-block"></i>
+                                    Data Buyers
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a href="/blacklist" class="btn btn-outline-danger btn-action w-100">
+                                    <i class="fas fa-ban mb-2 d-block"></i>
+                                    Blacklist
+                                </a>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <a href="/sop" class="btn btn-outline-dark btn-action w-100">
+                                    <i class="fas fa-file-alt mb-2 d-block"></i>
+                                    Kelola SOP
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 mb-4">
+                <div class="card">
+                    <div class="card-header bg-transparent border-0 pb-0">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-chart-bar text-success me-2"></i>
+                            Statistik Order
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <canvas id="chartOrder" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Auto dismiss toast after 5 seconds
+        setTimeout(() => {
+            const toasts = document.querySelectorAll('.toast');
+            toasts.forEach(toast => {
+                const bsToast = new bootstrap.Toast(toast);
+                bsToast.hide();
+            });
+        }, 5000);
+
+        // Chart
+        new Chart(document.getElementById('chartOrder').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun'],
+                datasets: [{
+                    label: 'Order',
+                    data: [15, 23, 17, 32, 28, 44],
+                    backgroundColor: '#667eea',
+                    borderRadius: 5
+                }]
+            },
+            options: { 
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

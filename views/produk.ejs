@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produk - Resbot AI Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .sidebar {
+            background: white;
+            min-height: calc(100vh - 76px);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            border-radius: 0 15px 15px 0;
+        }
+        .sidebar .nav-link {
+            color: #495057;
+            padding: 12px 20px;
+            margin: 5px 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #e9ecef;
+            color: #667eea;
+            transform: translateX(5px);
+        }
+        .sidebar .nav-link.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .main-content {
+            padding: 30px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-warning {
+            background: linear-gradient(135deg, #ffa726 0%, #fb8c00 100%);
+            border: none;
+            border-radius: 8px;
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .page-title {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .alert {
+            border-radius: 10px;
+            border: none;
+        }
+        .product-card {
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        .product-name {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 10px 10px 0 0;
+            margin: -20px -20px 15px -20px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        .product-content {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            font-family: 'Courier New', monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        .product-actions {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #6c757d;
+        }
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="/dashboard">
+                <i class="fas fa-robot me-2"></i>Resbot AI Admin
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/logout">
+                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 px-0">
+                <div class="sidebar">
+                    <nav class="nav flex-column py-3">
+                        <a class="nav-link" href="/dashboard">
+                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                        </a>
+                        <a class="nav-link" href="/buyers">
+                            <i class="fas fa-users me-2"></i>Buyers
+                        </a>
+                        <a class="nav-link" href="/blacklist">
+                            <i class="fas fa-ban me-2"></i>Blacklist
+                        </a>
+                        <a class="nav-link" href="/stock">
+                            <i class="fas fa-boxes me-2"></i>Stock
+                        </a>
+                        <a class="nav-link" href="/faq">
+                            <i class="fas fa-question-circle me-2"></i>FAQ
+                        </a>
+                        <a class="nav-link" href="/sop">
+                            <i class="fas fa-clipboard-list me-2"></i>SOP
+                        </a>
+                        <a class="nav-link" href="/promo">
+                            <i class="fas fa-tags me-2"></i>Promo
+                        </a>
+                        <a class="nav-link active" href="/produk">
+                            <i class="fas fa-box me-2"></i>Produk
+                        </a>
+                        <a class="nav-link" href="/claim">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Claim
+                        </a>
+                        <a class="nav-link" href="/claims-replace">
+                            <i class="fas fa-exchange-alt me-2"></i>Claims Replace
+                        </a>
+                        <a class="nav-link" href="/claims-reset">
+                            <i class="fas fa-redo me-2"></i>Claims Reset
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10">
+                <div class="main-content">
+                    <h2 class="page-title">
+                        <i class="fas fa-box me-2"></i>Manajemen Produk
+                    </h2>
+
+                    <!-- Toast Messages -->
+                    <% if (toast) { %>
+                        <div class="alert alert-<%= toast.type === 'error' ? 'danger' : toast.type %> alert-dismissible fade show" role="alert">
+                            <i class="fas fa-<%= toast.type === 'error' ? 'exclamation-triangle' : toast.type === 'success' ? 'check-circle' : 'info-circle' %> me-2"></i>
+                            <%= toast.msg %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <% } %>
+
+                    <!-- Add Product Form -->
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-plus me-2"></i>Tambah Produk Baru
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <form action="/produk/save" method="POST" id="productForm">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="produk" class="form-label">Nama Produk:</label>
+                                        <input name="produk" id="produk" class="form-control" placeholder="ex: netflix, spotify, youtube" required>
+                                        <div class="form-text">Nama produk (huruf kecil, tanpa spasi)</div>
+                                    </div>
+                                    <div class="col-md-8 mb-3">
+                                        <label for="content" class="form-label">Detail Produk:</label>
+                                        <textarea name="content" id="content" class="form-control" rows="6" 
+                                                  placeholder="Masukkan detail produk...&#10;&#10;Contoh:&#10;🎬 NETFLIX PREMIUM&#10;✅ Kualitas 4K Ultra HD&#10;✅ Akses semua konten&#10;✅ Bisa 4 device bersamaan&#10;✅ Garansi 30 hari&#10;&#10;Harga: Rp 25.000/bulan" required></textarea>
+                                        <div class="form-text">Deskripsi lengkap produk dengan fitur dan harga</div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-plus me-2"></i>Simpan Produk
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Products Grid -->
+                    <% if (produk && produk.length > 0) { %>
+                        <div class="row">
+                            <% produk.forEach(p => { %>
+                                <div class="col-md-6 col-lg-4 mb-4">
+                                    <div class="card product-card">
+                                        <div class="card-body">
+                                            <div class="product-name">
+                                                <i class="fas fa-box me-2"></i><%= p.name %>
+                                            </div>
+                                            <div class="product-content">
+<%= p.content %>
+                                            </div>
+                                            <div class="product-actions">
+                                                <button type="button" class="btn btn-info btn-sm" 
+                                                        data-name="<%= p.name %>" 
+                                                        data-content="<%= p.content.replace(/"/g, '"').replace(/\n/g, '\\n') %>" 
+                                                        onclick="viewProduct(this)">
+                                                    <i class="fas fa-eye me-1"></i>Lihat
+                                                </button>
+                                                <button type="button" class="btn btn-warning btn-sm" 
+                                                        data-name="<%= p.name %>" 
+                                                        data-content="<%= p.content.replace(/"/g, '"').replace(/\n/g, '\\n') %>" 
+                                                        onclick="editProduct(this)">
+                                                    <i class="fas fa-edit me-1"></i>Edit
+                                                </button>
+                                                <form action="/produk/delete" method="POST" style="display:inline">
+                                                    <input type="hidden" name="produk" value="<%= p.name %>">
+                                                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Hapus produk <%= p.name %>?')">
+                                                        <i class="fas fa-trash me-1"></i>Hapus
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <% }) %>
+                        </div>
+                    <% } else { %>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="empty-state">
+                                    <i class="fas fa-box-open"></i>
+                                    <h5>Belum ada produk</h5>
+                                    <p>Tambahkan produk pertama Anda untuk memulai</p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewModalTitle">
+                        <i class="fas fa-eye me-2"></i>Detail Produk
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="product-content" id="viewModalContent"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-edit me-2"></i>Edit Produk
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <form action="/produk/edit" method="POST">
+                    <div class="modal-body">
+                        <input type="hidden" name="oldName" id="editOldName">
+                        <div class="mb-3">
+                            <label for="editProduk" class="form-label">Nama Produk:</label>
+                            <input name="produk" id="editProduk" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editContent" class="form-label">Detail Produk:</label>
+                            <textarea name="content" id="editContent" class="form-control" rows="8" required></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Simpan Perubahan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Auto dismiss alerts after 5 seconds
+        setTimeout(function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 5000);
+
+        // View product function
+        function viewProduct(button) {
+            const name = button.getAttribute('data-name');
+            const content = button.getAttribute('data-content').replace(/\\n/g, '\n').replace(/"/g, '"');
+            document.getElementById('viewModalTitle').innerHTML = '<i class="fas fa-eye me-2"></i>Detail Produk: ' + name.toUpperCase();
+            document.getElementById('viewModalContent').textContent = content;
+            const modal = new bootstrap.Modal(document.getElementById('viewModal'));
+            modal.show();
+        }
+
+        // Edit product function
+        function editProduct(button) {
+            const name = button.getAttribute('data-name');
+            const content = button.getAttribute('data-content').replace(/\\n/g, '\n').replace(/"/g, '"');
+            document.getElementById('editOldName').value = name;
+            document.getElementById('editProduk').value = name;
+            document.getElementById('editContent').value = content;
+            const modal = new bootstrap.Modal(document.getElementById('editModal'));
+            modal.show();
+        }
+
+        // Form validation
+        document.getElementById('productForm').addEventListener('submit', function(e) {
+            const produkName = document.getElementById('produk').value;
+            if (!/^[a-z0-9_-]+$/.test(produkName)) {
+                e.preventDefault();
+                alert('Nama produk hanya boleh menggunakan huruf kecil, angka, underscore (_), dan dash (-)');
+                return false;
+            }
+        });
+    </script>
+</body>
+</html>

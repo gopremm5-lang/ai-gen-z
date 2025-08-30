@@ -1,0 +1,210 @@
+{
+  "traffic": {
+    "totalMessages": 40,
+    "dailyTraffic": {
+      "2025-08-29": 33,
+      "2025-08-30": 7
+    },
+    "hourlyDistribution": {
+      "5": 7,
+      "8": 19,
+      "9": 12,
+      "15": 2
+    },
+    "peakHours": {},
+    "avgResponseTime": 407.6,
+    "responseTimeDistribution": {
+      "<1s": 36,
+      "1-3s": 4
+    },
+    "concurrentUsers": {},
+    "trafficSources": {},
+    "errorRate": 1,
+    "downtimeMinutes": 0
+  },
+  "users": {
+    "totalUsers": 1,
+    "newUsersDaily": {
+      "2025-08-29": 7,
+      "2025-08-30": 1
+    },
+    "activeUsersDaily": {
+      "2025-08-29": {},
+      "2025-08-30": {}
+    },
+    "returningUsers": {},
+    "userRetentionRate": {},
+    "userLifecycleStage": {},
+    "topUsers": {
+      "6285750750522": 33,
+      "6289512822345": 7
+    },
+    "userGrowthRate": 0,
+    "avgSessionDuration": {
+      "6285750750522": [
+        568,
+        779,
+        3,
+        462,
+        5,
+        6,
+        2,
+        6,
+        4,
+        3,
+        8,
+        3,
+        3,
+        6,
+        4,
+        901,
+        3,
+        3,
+        961,
+        3,
+        5,
+        4,
+        2,
+        4,
+        13,
+        966,
+        5,
+        782,
+        937,
+        2,
+        1740,
+        1255,
+        979
+      ],
+      "6289512822345": [
+        831,
+        654,
+        1057,
+        1,
+        880,
+        1,
+        2453
+      ]
+    },
+    "userSatisfactionScore": 0
+  },
+  "products": {
+    "mostAskedProducts": {
+      "netflix": 14,
+      "canva": 2,
+      "capcut": 1,
+      "disney": 1
+    },
+    "productQueriesDaily": {
+      "2025-08-29": {
+        "netflix": 13,
+        "canva": 2,
+        "capcut": 1,
+        "disney": 1
+      },
+      "2025-08-30": {
+        "netflix": 1
+      }
+    },
+    "productConversionRate": {},
+    "topSellingCategories": {
+      "streaming": 15,
+      "design": 3
+    },
+    "productInfoRequests": {
+      "harga": 2,
+      "garansi": 0,
+      "fitur": 0,
+      "lengkap": 16
+    },
+    "productTrends": {},
+    "seasonalDemand": {},
+    "crossSellOpportunities": {}
+  },
+  "claims": {
+    "totalClaims": 0,
+    "claimsDaily": {},
+    "claimsByProduct": {},
+    "claimTypes": {
+      "garansi": 0,
+      "replace": 0,
+      "reset": 0,
+      "refund": 0
+    },
+    "claimResolutionTime": {},
+    "claimSuccessRate": 0,
+    "frequentIssues": {},
+    "claimTrends": {},
+    "preventableIssues": {}
+  },
+  "business": {
+    "inquiryToOrderConversion": 0,
+    "salesFunnelSteps": {
+      "inquiry": 0,
+      "productInfo": 0,
+      "pricing": 3,
+      "checkout": 0,
+      "completed": 0
+    },
+    "revenueImpact": {},
+    "customerLifetimeValue": {},
+    "averageOrderValue": {},
+    "seasonalTrends": {},
+    "competitorMentions": 0,
+    "upsellSuccess": 0
+  },
+  "marketing": {
+    "promoCodeUsage": {},
+    "campaignPerformance": {},
+    "referralSources": {
+      "whatsapp": 39
+    },
+    "socialMediaMentions": {},
+    "brandSentiment": {},
+    "marketingROI": {},
+    "contentEngagement": {},
+    "viralityIndex": 0
+  },
+  "technical": {
+    "systemUptime": 100,
+    "apiResponseTimes": {},
+    "databasePerformance": {},
+    "cacheHitRate": 0,
+    "memoryUsage": {},
+    "cpuUtilization": {},
+    "errorsByType": {},
+    "criticalErrors": 0,
+    "systemHealth": "healthy"
+  },
+  "intelligence": {
+    "knowledgeBaseSize": 0,
+    "learningSuccessRate": 0,
+    "aiConfidenceScores": {},
+    "fallbackToGemini": 0,
+    "improvedResponses": 0,
+    "learningTopics": {},
+    "ownerTeachingEffectiveness": {},
+    "autoLearningAccuracy": 0,
+    "contextUnderstanding": 0
+  },
+  "security": {
+    "safetyComplianceRate": 100,
+    "violationsByCategory": {},
+    "blockedContent": 0,
+    "threatLevel": "low",
+    "suspiciousActivity": {},
+    "dataBreachAttempts": 0,
+    "accessViolations": {},
+    "securityIncidents": 0
+  },
+  "customerService": {
+    "avgResolutionTime": 0,
+    "firstContactResolution": 0,
+    "escalationRate": 0,
+    "customerSatisfactionScore": 0,
+    "responseAccuracy": 0,
+    "serviceQuality": {},
+    "commonQuestions": {},
+    "knowledgeGaps": {}
+  }
+}

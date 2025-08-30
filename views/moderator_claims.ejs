@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Claims - Moderator Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sidebar {
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+        }
+        .sidebar .nav-link {
+            color: #ecf0f1;
+            padding: 12px 20px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .sidebar .nav-link.active {
+            background: #3498db;
+            color: white;
+        }
+        .claim-card {
+            border-left: 4px solid #007bff;
+            transition: all 0.3s;
+        }
+        .claim-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .claim-replace {
+            border-left-color: #dc3545;
+        }
+        .claim-reset {
+            border-left-color: #ffc107;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 px-0">
+                <div class="sidebar">
+                    <div class="p-3 text-center border-bottom border-secondary">
+                        <h5 class="text-white mb-0">
+                            <i class="fas fa-user-shield me-2"></i>
+                            Moderator Panel
+                        </h5>
+                        <small class="text-muted">Resbot AI</small>
+                    </div>
+                    <nav class="nav flex-column p-3">
+                        <a class="nav-link" href="/moderator/dashboard">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Dashboard
+                        </a>
+                        <a class="nav-link" href="/moderator/buyers">
+                            <i class="fas fa-users me-2"></i>
+                            Buyers
+                        </a>
+                        <a class="nav-link active" href="/moderator/claims">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Claims
+                        </a>
+                        <hr class="border-secondary">
+                        <a class="nav-link" href="/logout">
+                            <i class="fas fa-sign-out-alt me-2"></i>
+                            Logout
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10">
+                <!-- Header -->
+                <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                    <div>
+                        <h4 class="mb-0">Kelola Claims</h4>
+                        <small class="text-muted">Manajemen klaim garansi</small>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <span class="badge bg-danger fs-6">
+                            <i class="fas fa-sync-alt me-1"></i>
+                            Replace: <%= claims.filter(c => c.type === 'replace' && c.status === 'pending').length %>
+                        </span>
+                        <span class="badge bg-warning fs-6">
+                            <i class="fas fa-redo me-1"></i>
+                            Reset: <%= claims.filter(c => c.type === 'reset' && c.status === 'pending').length %>
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Toast Notification -->
+                <% if (toast) { %>
+                <div class="alert alert-<%= toast.type === 'error' ? 'danger' : toast.type %> alert-dismissible fade show m-3" role="alert">
+                    <%= toast.msg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <% } %>
+
+                <!-- Claims List -->
+                <div class="p-3">
+                    <% if (claims.length === 0) { %>
+                    <div class="card">
+                        <div class="card-body text-center py-5">
+                            <i class="fas fa-exclamation-triangle fa-3x text-muted mb-3"></i>
+                            <h5 class="text-muted">Belum ada claims</h5>
+                            <p class="text-muted">Claims akan muncul di sini ketika ada laporan dari bot</p>
+                        </div>
+                    </div>
+                    <% } else { %>
+                    <div class="row g-3">
+                        <% claims.forEach((claim, index) => { %>
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card claim-card claim-<%= claim.type %> h-100">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <span class="badge bg-<%= claim.type === 'replace' ? 'danger' : 'warning' %>">
+                                            <i class="fas fa-<%= claim.type === 'replace' ? 'sync-alt' : 'redo' %> me-1"></i>
+                                            <%= claim.type.toUpperCase() %>
+                                        </span>
+                                    </div>
+                                    <small class="text-muted">
+                                        <%= new Date(claim.tanggal).toLocaleDateString('id-ID') %>
+                                    </small>
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-title">
+                                        <i class="fas fa-user me-2"></i>
+                                        <%= claim.nama %>
+                                    </h6>
+                                    <p class="card-text">
+                                        <strong>Produk:</strong> 
+                                        <span class="badge bg-info"><%= claim.produk %></span>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Masalah:</strong><br>
+                                        <small class="text-muted"><%= claim.masalah %></small>
+                                    </p>
+                                    <p class="card-text">
+                                        <strong>Admin:</strong> 
+                                        <small class="text-muted"><%= claim.admin %></small>
+                                    </p>
+                                </div>
+                                <div class="card-footer">
+                                    <% if (claim.status === 'pending') { %>
+                                    <form action="/moderator/claims/resolve" method="POST" class="d-inline">
+                                        <input type="hidden" name="claimId" value="<%= claim.id %>">
+                                        <input type="hidden" name="claimType" value="<%= claim.type %>">
+                                        <button type="submit" class="btn btn-success btn-sm w-100" 
+                                                onclick="return confirm('Yakin ingin menyelesaikan claim ini?')">
+                                            <i class="fas fa-check me-2"></i>
+                                            Selesaikan
+                                        </button>
+                                    </form>
+                                    <% } else { %>
+                                    <div class="text-center">
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check me-1"></i>
+                                            Resolved
+                                        </span>
+                                        <% if (claim.resolvedBy) { %>
+                                        <br><small class="text-muted">oleh <%= claim.resolvedBy %></small>
+                                        <% } %>
+                                    </div>
+                                    <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                    <% } %>
+                </div>
+
+                <!-- Bot Commands Info -->
+                <div class="p-3">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mb-0">
+                                <i class="fas fa-robot me-2 text-primary"></i>
+                                Bot Commands untuk Claims
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6>Tambah Claim Replace:</h6>
+                                    <div class="bg-light p-3 rounded mb-3">
+                                        <code>addclaim [nama] [produk] [masalah] replace</code>
+                                    </div>
+                                    <p class="text-muted small">
+                                        Contoh: <code>addclaim John Netflix "tidak bisa login" replace</code>
+                                    </p>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6>Tambah Claim Reset:</h6>
+                                    <div class="bg-light p-3 rounded mb-3">
+                                        <code>addclaim [nama] [produk] [masalah] reset</code>
+                                    </div>
+                                    <p class="text-muted small">
+                                        Contoh: <code>addclaim Jane Spotify "password berubah" reset</code>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

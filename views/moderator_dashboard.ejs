@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moderator Dashboard - Resbot AI</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .card-stats {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+        }
+        .card-stats-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+        }
+        .card-stats-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+        }
+        .card-stats-4 {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            border: none;
+            border-radius: 15px;
+        }
+        .sidebar {
+            background: linear-gradient(180deg, #2c3e50 0%, #34495e 100%);
+            min-height: 100vh;
+        }
+        .sidebar .nav-link {
+            color: #ecf0f1;
+            padding: 12px 20px;
+            margin: 5px 0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .sidebar .nav-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        .sidebar .nav-link.active {
+            background: #3498db;
+            color: white;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 px-0">
+                <div class="sidebar">
+                    <div class="p-3 text-center border-bottom border-secondary">
+                        <h5 class="text-white mb-0">
+                            <i class="fas fa-user-shield me-2"></i>
+                            Moderator Panel
+                        </h5>
+                        <small class="text-muted">Resbot AI</small>
+                    </div>
+                    <nav class="nav flex-column p-3">
+                        <a class="nav-link active" href="/moderator/dashboard">
+                            <i class="fas fa-tachometer-alt me-2"></i>
+                            Dashboard
+                        </a>
+                        <a class="nav-link" href="/moderator/buyers">
+                            <i class="fas fa-users me-2"></i>
+                            Buyers
+                        </a>
+                        <a class="nav-link" href="/moderator/claims">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Claims
+                        </a>
+                        <hr class="border-secondary">
+                        <a class="nav-link" href="/logout">
+                            <i class="fas fa-sign-out-alt me-2"></i>
+                            Logout
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10">
+                <!-- Header -->
+                <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                    <div>
+                        <h4 class="mb-0">Dashboard Moderator</h4>
+                        <small class="text-muted">Selamat datang, <%= user.username %></small>
+                    </div>
+                    <div class="text-end">
+                        <small class="text-muted">
+                            <i class="fas fa-clock me-1"></i>
+                            <%= new Date().toLocaleDateString('id-ID', { 
+                                weekday: 'long', 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: 'numeric' 
+                            }) %>
+                        </small>
+                    </div>
+                </div>
+
+                <!-- Toast Notification -->
+                <% if (toast) { %>
+                <div class="alert alert-<%= toast.type === 'error' ? 'danger' : toast.type %> alert-dismissible fade show m-3" role="alert">
+                    <%= toast.msg %>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <% } %>
+
+                <!-- Stats Cards -->
+                <div class="p-3">
+                    <div class="row g-3 mb-4">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card card-stats h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h3 class="mb-0"><%= stats.buyers %></h3>
+                                            <p class="mb-0">Total Buyers</p>
+                                        </div>
+                                        <div class="fs-1 opacity-75">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card card-stats-2 h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h3 class="mb-0"><%= stats.claimsReplace %></h3>
+                                            <p class="mb-0">Claims Replace</p>
+                                        </div>
+                                        <div class="fs-1 opacity-75">
+                                            <i class="fas fa-sync-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card card-stats-3 h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h3 class="mb-0"><%= stats.claimsReset %></h3>
+                                            <p class="mb-0">Claims Reset</p>
+                                        </div>
+                                        <div class="fs-1 opacity-75">
+                                            <i class="fas fa-redo"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 col-lg-3">
+                            <div class="card card-stats-4 h-100">
+                                <div class="card-body">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h3 class="mb-0"><%= stats.totalClaims %></h3>
+                                            <p class="mb-0">Total Claims</p>
+                                        </div>
+                                        <div class="fs-1 opacity-75">
+                                            <i class="fas fa-chart-line"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <i class="fas fa-plus-circle me-2 text-primary"></i>
+                                        Quick Actions
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-grid gap-2">
+                                        <a href="/moderator/buyers" class="btn btn-outline-primary">
+                                            <i class="fas fa-user-plus me-2"></i>
+                                            Kelola Buyers
+                                        </a>
+                                        <a href="/moderator/claims" class="btn btn-outline-warning">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                            Kelola Claims
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="mb-0">
+                                        <i class="fas fa-robot me-2 text-success"></i>
+                                        Bot Commands
+                                    </h5>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-3">Gunakan command berikut di WhatsApp:</p>
+                                    <div class="bg-light p-3 rounded">
+                                        <code>addbuyer [nama] [produk] [harga]</code><br>
+                                        <code>addclaim [nama] [produk] [masalah] [tipe]</code><br>
+                                        <code>adminhelp</code>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,120 @@
+{
+  "timestamp": 1756483725427,
+  "period": "hourly",
+  "summary": {
+    "health": "warning",
+    "alerts": 89,
+    "performance": {
+      "cpu": 15,
+      "memory": 95,
+      "responseTime": 0,
+      "throughput": 0,
+      "errorRate": 0
+    },
+    "business": {
+      "messagesProcessed": 33,
+      "usersActive": 2,
+      "conversionRate": 0,
+      "customerSatisfaction": 85
+    }
+  },
+  "incidents": [
+    {
+      "id": "1756481447772",
+      "severity": "warning",
+      "type": "memory",
+      "message": "Memory usage high: 93%",
+      "timestamp": 1756481447772,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756481747814",
+      "severity": "warning",
+      "type": "memory",
+      "message": "Memory usage high: 93%",
+      "timestamp": 1756481747814,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756481867835",
+      "severity": "critical",
+      "type": "memory",
+      "message": "Memory usage critical: 95%",
+      "timestamp": 1756481867835,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756482047857",
+      "severity": "warning",
+      "type": "memory",
+      "message": "Memory usage high: 94%",
+      "timestamp": 1756482047857,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756482227865",
+      "severity": "critical",
+      "type": "memory",
+      "message": "Memory usage critical: 95%",
+      "timestamp": 1756482227865,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756482527902",
+      "severity": "critical",
+      "type": "memory",
+      "message": "Memory usage critical: 95%",
+      "timestamp": 1756482527902,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756482707920",
+      "severity": "warning",
+      "type": "memory",
+      "message": "Memory usage high: 94%",
+      "timestamp": 1756482707920,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756482827930",
+      "severity": "critical",
+      "type": "memory",
+      "message": "Memory usage critical: 95%",
+      "timestamp": 1756482827930,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756483127957",
+      "severity": "critical",
+      "type": "memory",
+      "message": "Memory usage critical: 95%",
+      "timestamp": 1756483127957,
+      "acknowledged": false,
+      "resolved": false
+    },
+    {
+      "id": "1756483427988",
+      "severity": "critical",
+      "type": "memory",
+      "message": "Memory usage critical: 95%",
+      "timestamp": 1756483427988,
+      "acknowledged": false,
+      "resolved": false
+    }
+  ],
+  "recommendations": [
+    {
+      "type": "memory",
+      "priority": "high",
+      "message": "Consider running memory cleanup or reducing cache size"
+    }
+  ]
+}

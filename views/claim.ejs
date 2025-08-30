@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim - Resbot AI Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .sidebar {
+            background: white;
+            min-height: calc(100vh - 76px);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            border-radius: 0 15px 15px 0;
+        }
+        .sidebar .nav-link {
+            color: #495057;
+            padding: 12px 20px;
+            margin: 5px 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        .sidebar .nav-link:hover {
+            background-color: #e9ecef;
+            color: #667eea;
+            transform: translateX(5px);
+        }
+        .sidebar .nav-link.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .main-content {
+            padding: 30px;
+        }
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+        .btn-success {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            border: none;
+            border-radius: 8px;
+        }
+        .btn-danger {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+            border: none;
+            border-radius: 8px;
+        }
+        .form-control {
+            border-radius: 10px;
+            border: 2px solid #e9ecef;
+            padding: 12px 15px;
+        }
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+        .table {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        .table thead th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            font-weight: 600;
+        }
+        .page-title {
+            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+        .alert {
+            border-radius: 10px;
+            border: none;
+        }
+        .badge {
+            border-radius: 20px;
+            padding: 8px 12px;
+        }
+        .message-preview {
+            max-width: 300px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .stats-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .stats-number {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand fw-bold" href="/dashboard">
+                <i class="fas fa-robot me-2"></i>Resbot AI Admin
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a class="nav-link" href="/logout">
+                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3 col-lg-2 px-0">
+                <div class="sidebar">
+                    <nav class="nav flex-column py-3">
+                        <a class="nav-link" href="/dashboard">
+                            <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                        </a>
+                        <a class="nav-link" href="/buyers">
+                            <i class="fas fa-users me-2"></i>Buyers
+                        </a>
+                        <a class="nav-link" href="/blacklist">
+                            <i class="fas fa-ban me-2"></i>Blacklist
+                        </a>
+                        <a class="nav-link" href="/stock">
+                            <i class="fas fa-boxes me-2"></i>Stock
+                        </a>
+                        <a class="nav-link" href="/faq">
+                            <i class="fas fa-question-circle me-2"></i>FAQ
+                        </a>
+                        <a class="nav-link" href="/sop">
+                            <i class="fas fa-clipboard-list me-2"></i>SOP
+                        </a>
+                        <a class="nav-link" href="/promo">
+                            <i class="fas fa-tags me-2"></i>Promo
+                        </a>
+                        <a class="nav-link" href="/produk">
+                            <i class="fas fa-box me-2"></i>Produk
+                        </a>
+                        <a class="nav-link active" href="/claim">
+                            <i class="fas fa-exclamation-triangle me-2"></i>Claim
+                        </a>
+                        <a class="nav-link" href="/claims-replace">
+                            <i class="fas fa-exchange-alt me-2"></i>Claims Replace
+                        </a>
+                        <a class="nav-link" href="/claims-reset">
+                            <i class="fas fa-redo me-2"></i>Claims Reset
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9 col-lg-10">
+                <div class="main-content">
+                    <h2 class="page-title">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Log Claim Garansi
+                    </h2>
+
+                    <!-- Toast Messages -->
+                    <% if (toast) { %>
+                        <div class="alert alert-<%= toast.type === 'error' ? 'danger' : toast.type %> alert-dismissible fade show" role="alert">
+                            <i class="fas fa-<%= toast.type === 'error' ? 'exclamation-triangle' : toast.type === 'success' ? 'check-circle' : 'info-circle' %> me-2"></i>
+                            <%= toast.msg %>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    <% } %>
+
+                    <!-- Statistics -->
+                    <% if (claim && claim.length > 0) { %>
+                        <div class="row mb-4">
+                            <div class="col-md-4">
+                                <div class="stats-card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <div class="stats-number"><%= claim.length %></div>
+                                            <div>Total Claims</div>
+                                        </div>
+                                        <i class="fas fa-clipboard-list fa-2x opacity-75"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stats-card" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%);">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <div class="stats-number">
+                                                <%= claim.filter(c => (c.status || 'OPEN') === 'RESOLVED').length %>
+                                            </div>
+                                            <div>Resolved</div>
+                                        </div>
+                                        <i class="fas fa-check-circle fa-2x opacity-75"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="stats-card" style="background: linear-gradient(135deg, #ffc107 0%, #fd7e14 100%);">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <div class="stats-number">
+                                                <%= claim.filter(c => (c.status || 'OPEN') === 'OPEN').length %>
+                                            </div>
+                                            <div>Open</div>
+                                        </div>
+                                        <i class="fas fa-clock fa-2x opacity-75"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+
+                    <!-- Claims Table -->
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-list me-2"></i>Daftar Claim Garansi
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <% if (claim && claim.length > 0) { %>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>User</th>
+                                                <th>Pesan</th>
+                                                <th>Status</th>
+                                                <th>Tanggal</th>
+                                                <th>Aksi</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% claim.forEach((item, i) => { %>
+                                                <tr>
+                                                    <td><%= i+1 %></td>
+                                                    <td>
+                                                        <strong><%= item.user %></strong>
+                                                    </td>
+                                                    <td>
+                                                        <div class="message-preview" title="<%= item.message %>">
+                                                            <%= item.message %>
+                                                        </div>
+                                                    </td>
+                                                    <td>
+                                                        <% if ((item.status || 'OPEN') === 'RESOLVED') { %>
+                                                            <span class="badge bg-success">
+                                                                <i class="fas fa-check me-1"></i>RESOLVED
+                                                            </span>
+                                                        <% } else { %>
+                                                            <span class="badge bg-warning">
+                                                                <i class="fas fa-clock me-1"></i>OPEN
+                                                            </span>
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <% if (item.date) { %>
+                                                            <small class="text-muted">
+                                                                <%= new Date(item.date).toLocaleDateString("id-ID") %>
+                                                            </small>
+                                                        <% } else { %>
+                                                            <small class="text-muted">-</small>
+                                                        <% } %>
+                                                    </td>
+                                                    <td>
+                                                        <div class="btn-group" role="group">
+                                                            <button type="button" class="btn btn-info btn-sm" 
+                                                                    data-user="<%= item.user %>" 
+                                                                    data-message="<%= item.message.replace(/"/g, '"') %>" 
+                                                                    data-status="<%= item.status || 'OPEN' %>" 
+                                                                    onclick="viewClaim(this)">
+                                                                <i class="fas fa-eye"></i>
+                                                            </button>
+                                                            <% if ((item.status || 'OPEN') !== 'RESOLVED') { %>
+                                                                <form method="post" action="/claim/resolve" style="display:inline">
+                                                                    <input type="hidden" name="idx" value="<%= i %>">
+                                                                    <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Tandai claim ini sebagai selesai?')">
+                                                                        <i class="fas fa-check"></i>
+                                                                    </button>
+                                                                </form>
+                                                            <% } %>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            <% }) %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            <% } else { %>
+                                <div class="text-center py-5">
+                                    <i class="fas fa-clipboard-check fa-3x text-muted mb-3"></i>
+                                    <h5 class="text-muted">Belum ada claim garansi</h5>
+                                    <p class="text-muted">Semua produk berjalan lancar tanpa keluhan</p>
+                                </div>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Modal -->
+    <div class="modal fade" id="viewModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">
+                        <i class="fas fa-eye me-2"></i>Detail Claim
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <strong>User:</strong>
+                            <p id="modalUser" class="text-muted"></p>
+                        </div>
+                        <div class="col-md-6">
+                            <strong>Status:</strong>
+                            <p id="modalStatus"></p>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <strong>Pesan Claim:</strong>
+                        <div class="mt-2 p-3 bg-light rounded">
+                            <p id="modalMessage" class="mb-0"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Auto dismiss alerts after 5 seconds
+        setTimeout(function() {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            });
+        }, 5000);
+
+        // View claim function
+        function viewClaim(button) {
+            const user = button.getAttribute('data-user');
+            const message = button.getAttribute('data-message').replace(/"/g, '"');
+            const status = button.getAttribute('data-status');
+            
+            document.getElementById('modalUser').textContent = user;
+            document.getElementById('modalMessage').textContent = message;
+            
+            const statusElement = document.getElementById('modalStatus');
+            if (status === 'RESOLVED') {
+                statusElement.innerHTML = '<span class="badge bg-success"><i class="fas fa-check me-1"></i>RESOLVED</span>';
+            } else {
+                statusElement.innerHTML = '<span class="badge bg-warning"><i class="fas fa-clock me-1"></i>OPEN</span>';
+            }
+            
+            const modal = new bootstrap.Modal(document.getElementById('viewModal'));
+            modal.show();
+        }
+    </script>
+</body>
+</html>
