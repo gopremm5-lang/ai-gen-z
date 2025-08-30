@@ -1,1 +1,839 @@
-[]
+[
+  {
+    "id": 1756548254102,
+    "input": "cara order",
+    "response": "Untuk order produk di Vylozzone, Kak bisa langsung chat admin dengan menyebutkan produk yang diinginkan. Admin akan berikan detail harga dan cara pembayaran. Setelah transfer, produk akan dikirim maksimal 1x24 jam.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.102Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254104,
+    "input": "bagaimana order",
+    "response": "Untuk order produk di Vylozzone, Kak bisa langsung chat admin dengan menyebutkan produk yang diinginkan. Admin akan berikan detail harga dan cara pembayaran. Setelah transfer, produk akan dikirim maksimal 1x24 jam.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254105,
+    "input": "cara beli",
+    "response": "Untuk order produk di Vylozzone, Kak bisa langsung chat admin dengan menyebutkan produk yang diinginkan. Admin akan berikan detail harga dan cara pembayaran. Setelah transfer, produk akan dikirim maksimal 1x24 jam.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254106,
+    "input": "bagaimana beli",
+    "response": "Untuk order produk di Vylozzone, Kak bisa langsung chat admin dengan menyebutkan produk yang diinginkan. Admin akan berikan detail harga dan cara pembayaran. Setelah transfer, produk akan dikirim maksimal 1x24 jam.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254107,
+    "input": "order",
+    "response": "Untuk order produk di Vylozzone, Kak bisa langsung chat admin dengan menyebutkan produk yang diinginkan. Admin akan berikan detail harga dan cara pembayaran. Setelah transfer, produk akan dikirim maksimal 1x24 jam.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254108,
+    "input": "garansi",
+    "response": "Semua produk Vylozzone bergaransi sesuai ketentuan: Akun streaming 30 hari, Aplikasi premium 7 hari, SMM services sesuai package. Jika ada kendala dalam masa garansi, langsung chat admin dengan bukti order ya Kak.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254109,
+    "input": "berapa lama garansi",
+    "response": "Semua produk Vylozzone bergaransi sesuai ketentuan: Akun streaming 30 hari, Aplikasi premium 7 hari, SMM services sesuai package. Jika ada kendala dalam masa garansi, langsung chat admin dengan bukti order ya Kak.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254110,
+    "input": "garansi berapa hari",
+    "response": "Semua produk Vylozzone bergaransi sesuai ketentuan: Akun streaming 30 hari, Aplikasi premium 7 hari, SMM services sesuai package. Jika ada kendala dalam masa garansi, langsung chat admin dengan bukti order ya Kak.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254111,
+    "input": "warranty",
+    "response": "Semua produk Vylozzone bergaransi sesuai ketentuan: Akun streaming 30 hari, Aplikasi premium 7 hari, SMM services sesuai package. Jika ada kendala dalam masa garansi, langsung chat admin dengan bukti order ya Kak.",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254112,
+    "input": "pembayaran",
+    "response": "Vylozzone menerima pembayaran via: \r\n\r\n*PAYMENT*\r\n\r\nDana\r\n081323903800\r\n\r\nGopay\r\n081323903800\r\n\r\nBCA\r\n7830598949\r\n\r\nQRIS : (ada fee 500p)\r\nhttps://wa.me/p/8439726572750815/6289630375723\r\n\r\nA.N Javier \r\n\r\n*Periode Waktu Transfer : Max 30 Menit.*\r\nHarap konfirmasi terlebih dahulu apabila akan transfer diatas waktu 30 menit karena billing bisa berubah\r\n\r\n*sertakan bukti transfer dan atas nama dan kirim ke nomer admin dibawah*\r\n\r\nAdmin : 6289630375723\r\nPilih yang paling mudah untuk Kak ya!",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254113,
+    "input": "bayar",
+    "response": "Vylozzone menerima pembayaran via: \r\n\r\n*PAYMENT*\r\n\r\nDana\r\n081323903800\r\n\r\nGopay\r\n081323903800\r\n\r\nBCA\r\n7830598949\r\n\r\nQRIS : (ada fee 500p)\r\nhttps://wa.me/p/8439726572750815/6289630375723\r\n\r\nA.N Javier \r\n\r\n*Periode Waktu Transfer : Max 30 Menit.*\r\nHarap konfirmasi terlebih dahulu apabila akan transfer diatas waktu 30 menit karena billing bisa berubah\r\n\r\n*sertakan bukti transfer dan atas nama dan kirim ke nomer admin dibawah*\r\n\r\nAdmin : 6289630375723\r\nPilih yang paling mudah untuk Kak ya!",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254114,
+    "input": "metode pembayaran",
+    "response": "Vylozzone menerima pembayaran via: \r\n\r\n*PAYMENT*\r\n\r\nDana\r\n081323903800\r\n\r\nGopay\r\n081323903800\r\n\r\nBCA\r\n7830598949\r\n\r\nQRIS : (ada fee 500p)\r\nhttps://wa.me/p/8439726572750815/6289630375723\r\n\r\nA.N Javier \r\n\r\n*Periode Waktu Transfer : Max 30 Menit.*\r\nHarap konfirmasi terlebih dahulu apabila akan transfer diatas waktu 30 menit karena billing bisa berubah\r\n\r\n*sertakan bukti transfer dan atas nama dan kirim ke nomer admin dibawah*\r\n\r\nAdmin : 6289630375723\r\nPilih yang paling mudah untuk Kak ya!",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254115,
+    "input": "cara bayar",
+    "response": "Vylozzone menerima pembayaran via: \r\n\r\n*PAYMENT*\r\n\r\nDana\r\n081323903800\r\n\r\nGopay\r\n081323903800\r\n\r\nBCA\r\n7830598949\r\n\r\nQRIS : (ada fee 500p)\r\nhttps://wa.me/p/8439726572750815/6289630375723\r\n\r\nA.N Javier \r\n\r\n*Periode Waktu Transfer : Max 30 Menit.*\r\nHarap konfirmasi terlebih dahulu apabila akan transfer diatas waktu 30 menit karena billing bisa berubah\r\n\r\n*sertakan bukti transfer dan atas nama dan kirim ke nomer admin dibawah*\r\n\r\nAdmin : 6289630375723\r\nPilih yang paling mudah untuk Kak ya!",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254116,
+    "input": "payment",
+    "response": "Vylozzone menerima pembayaran via: \r\n\r\n*PAYMENT*\r\n\r\nDana\r\n081323903800\r\n\r\nGopay\r\n081323903800\r\n\r\nBCA\r\n7830598949\r\n\r\nQRIS : (ada fee 500p)\r\nhttps://wa.me/p/8439726572750815/6289630375723\r\n\r\nA.N Javier \r\n\r\n*Periode Waktu Transfer : Max 30 Menit.*\r\nHarap konfirmasi terlebih dahulu apabila akan transfer diatas waktu 30 menit karena billing bisa berubah\r\n\r\n*sertakan bukti transfer dan atas nama dan kirim ke nomer admin dibawah*\r\n\r\nAdmin : 6289630375723\r\nPilih yang paling mudah untuk Kak ya!",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254117,
+    "input": "cara claim garansi",
+    "response": "untuk claim garansi bisa melalui 2 cara, cara pertama kamu via ai yang mana kakak tidak perlu chat admin saya yang meneruskan kepada admin masalah kakak cukup berikan data seperti nama email,pasword dll supaya admin bisa membantu. cara kedua kakak bisa langsung menghubungi admin secara langsung untuk nomer admin ini dia nomernya tinggal kakak click http://wa.me//6289630375723",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254118,
+    "input": "claim garansi",
+    "response": "untuk claim garansi bisa melalui 2 cara, cara pertama kamu via ai yang mana kakak tidak perlu chat admin saya yang meneruskan kepada admin masalah kakak cukup berikan data seperti nama email,pasword dll supaya admin bisa membantu. cara kedua kakak bisa langsung menghubungi admin secara langsung untuk nomer admin ini dia nomernya tinggal kakak click http://wa.me//6289630375723",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254119,
+    "input": "replace",
+    "response": "untuk claim garansi bisa melalui 2 cara, cara pertama kamu via ai yang mana kakak tidak perlu chat admin saya yang meneruskan kepada admin masalah kakak cukup berikan data seperti nama email,pasword dll supaya admin bisa membantu. cara kedua kakak bisa langsung menghubungi admin secara langsung untuk nomer admin ini dia nomernya tinggal kakak click http://wa.me//6289630375723",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254120,
+    "input": "tutor claim garansi",
+    "response": "untuk claim garansi bisa melalui 2 cara, cara pertama kamu via ai yang mana kakak tidak perlu chat admin saya yang meneruskan kepada admin masalah kakak cukup berikan data seperti nama email,pasword dll supaya admin bisa membantu. cara kedua kakak bisa langsung menghubungi admin secara langsung untuk nomer admin ini dia nomernya tinggal kakak click http://wa.me//6289630375723",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254121,
+    "input": "tutor garansi",
+    "response": "untuk claim garansi bisa melalui 2 cara, cara pertama kamu via ai yang mana kakak tidak perlu chat admin saya yang meneruskan kepada admin masalah kakak cukup berikan data seperti nama email,pasword dll supaya admin bisa membantu. cara kedua kakak bisa langsung menghubungi admin secara langsung untuk nomer admin ini dia nomernya tinggal kakak click http://wa.me//6289630375723",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254122,
+    "input": "garansi claim",
+    "response": "untuk claim garansi bisa melalui 2 cara, cara pertama kamu via ai yang mana kakak tidak perlu chat admin saya yang meneruskan kepada admin masalah kakak cukup berikan data seperti nama email,pasword dll supaya admin bisa membantu. cara kedua kakak bisa langsung menghubungi admin secara langsung untuk nomer admin ini dia nomernya tinggal kakak click http://wa.me//6289630375723",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254123,
+    "input": "house",
+    "response": "*SOLUSI HOUSEHOLD NETFLIX*\r\n\r\n*HP/TAB*\r\n1. Close tab apk netflixnya\r\n2. Nyalakan mode pesawat\r\n3. Buka aplikasi netflix\r\n4. Masuk ke netflix dalam keadaan tidak ada sinyal\r\n4. Tampilan akan berubah ( sudah tidak household lagi) \r\n5. Matikan mode pesawat dan bisa dinyalakan kembali data / wifinya ya\r\n6. Jika masih household ulangi lagi, dan pastikan ikuti step - stepnya \r\n\r\n*DEVICE TV :*\r\n- Klik i'm Travelling\r\n- Keluar dari akun / sign out alldev\r\n- Restart tv router\r\n- Relogin\r\n- Ganti device dan jaringan. Bisa dipastikan jika device tv sudah terkena household jaringan wifi tidak bisa digunakan lagi, jadi harus menggunakan jaringan baru / mobile data.\r\n\r\n*APABILA SEMUA STEP SUDAH DILAKUKAN DAN TIDAK BERHASIL MAKA JANGAN SPAM DAN KONFIRMASI KE ADMIN*",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254124,
+    "input": "hold",
+    "response": "*SOLUSI HOUSEHOLD NETFLIX*\r\n\r\n*HP/TAB*\r\n1. Close tab apk netflixnya\r\n2. Nyalakan mode pesawat\r\n3. Buka aplikasi netflix\r\n4. Masuk ke netflix dalam keadaan tidak ada sinyal\r\n4. Tampilan akan berubah ( sudah tidak household lagi) \r\n5. Matikan mode pesawat dan bisa dinyalakan kembali data / wifinya ya\r\n6. Jika masih household ulangi lagi, dan pastikan ikuti step - stepnya \r\n\r\n*DEVICE TV :*\r\n- Klik i'm Travelling\r\n- Keluar dari akun / sign out alldev\r\n- Restart tv router\r\n- Relogin\r\n- Ganti device dan jaringan. Bisa dipastikan jika device tv sudah terkena household jaringan wifi tidak bisa digunakan lagi, jadi harus menggunakan jaringan baru / mobile data.\r\n\r\n*APABILA SEMUA STEP SUDAH DILAKUKAN DAN TIDAK BERHASIL MAKA JANGAN SPAM DAN KONFIRMASI KE ADMIN*",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254125,
+    "input": "house hold",
+    "response": "*SOLUSI HOUSEHOLD NETFLIX*\r\n\r\n*HP/TAB*\r\n1. Close tab apk netflixnya\r\n2. Nyalakan mode pesawat\r\n3. Buka aplikasi netflix\r\n4. Masuk ke netflix dalam keadaan tidak ada sinyal\r\n4. Tampilan akan berubah ( sudah tidak household lagi) \r\n5. Matikan mode pesawat dan bisa dinyalakan kembali data / wifinya ya\r\n6. Jika masih household ulangi lagi, dan pastikan ikuti step - stepnya \r\n\r\n*DEVICE TV :*\r\n- Klik i'm Travelling\r\n- Keluar dari akun / sign out alldev\r\n- Restart tv router\r\n- Relogin\r\n- Ganti device dan jaringan. Bisa dipastikan jika device tv sudah terkena household jaringan wifi tidak bisa digunakan lagi, jadi harus menggunakan jaringan baru / mobile data.\r\n\r\n*APABILA SEMUA STEP SUDAH DILAKUKAN DAN TIDAK BERHASIL MAKA JANGAN SPAM DAN KONFIRMASI KE ADMIN*",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254126,
+    "input": "berpergian",
+    "response": "*SOLUSI HOUSEHOLD NETFLIX*\r\n\r\n*HP/TAB*\r\n1. Close tab apk netflixnya\r\n2. Nyalakan mode pesawat\r\n3. Buka aplikasi netflix\r\n4. Masuk ke netflix dalam keadaan tidak ada sinyal\r\n4. Tampilan akan berubah ( sudah tidak household lagi) \r\n5. Matikan mode pesawat dan bisa dinyalakan kembali data / wifinya ya\r\n6. Jika masih household ulangi lagi, dan pastikan ikuti step - stepnya \r\n\r\n*DEVICE TV :*\r\n- Klik i'm Travelling\r\n- Keluar dari akun / sign out alldev\r\n- Restart tv router\r\n- Relogin\r\n- Ganti device dan jaringan. Bisa dipastikan jika device tv sudah terkena household jaringan wifi tidak bisa digunakan lagi, jadi harus menggunakan jaringan baru / mobile data.\r\n\r\n*APABILA SEMUA STEP SUDAH DILAKUKAN DAN TIDAK BERHASIL MAKA JANGAN SPAM DAN KONFIRMASI KE ADMIN*",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254127,
+    "input": "bukan bagian rumah",
+    "response": "*SOLUSI HOUSEHOLD NETFLIX*\r\n\r\n*HP/TAB*\r\n1. Close tab apk netflixnya\r\n2. Nyalakan mode pesawat\r\n3. Buka aplikasi netflix\r\n4. Masuk ke netflix dalam keadaan tidak ada sinyal\r\n4. Tampilan akan berubah ( sudah tidak household lagi) \r\n5. Matikan mode pesawat dan bisa dinyalakan kembali data / wifinya ya\r\n6. Jika masih household ulangi lagi, dan pastikan ikuti step - stepnya \r\n\r\n*DEVICE TV :*\r\n- Klik i'm Travelling\r\n- Keluar dari akun / sign out alldev\r\n- Restart tv router\r\n- Relogin\r\n- Ganti device dan jaringan. Bisa dipastikan jika device tv sudah terkena household jaringan wifi tidak bisa digunakan lagi, jadi harus menggunakan jaringan baru / mobile data.\r\n\r\n*APABILA SEMUA STEP SUDAH DILAKUKAN DAN TIDAK BERHASIL MAKA JANGAN SPAM DAN KONFIRMASI KE ADMIN*",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254128,
+    "input": "produk apa aja",
+    "response": "🛍️ *PRODUK VYLOZZONE*\n\n📺 *Streaming:*\n• Netflix (mulai 15k)\n• Disney+ (mulai 17k)\n• YouTube Premium (mulai 5k)\n• Prime Video, HBO Max\n• iQIYI, VIU, WeTV, Vision+, Vidio\n\n🎨 *Aplikasi:*\n• CapCut Pro\n• Alight Motion\n• ChatGPT Plus\n• BStation\n\nMau info detail produk mana, Kak? Tinggal ketik nama produknya aja ya! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254129,
+    "input": "ada produk apa",
+    "response": "🛍️ *PRODUK VYLOZZONE*\n\n📺 *Streaming:*\n• Netflix (mulai 15k)\n• Disney+ (mulai 17k)\n• YouTube Premium (mulai 5k)\n• Prime Video, HBO Max\n• iQIYI, VIU, WeTV, Vision+, Vidio\n\n🎨 *Aplikasi:*\n• CapCut Pro\n• Alight Motion\n• ChatGPT Plus\n• BStation\n\nMau info detail produk mana, Kak? Tinggal ketik nama produknya aja ya! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254130,
+    "input": "list produk",
+    "response": "🛍️ *PRODUK VYLOZZONE*\n\n📺 *Streaming:*\n• Netflix (mulai 15k)\n• Disney+ (mulai 17k)\n• YouTube Premium (mulai 5k)\n• Prime Video, HBO Max\n• iQIYI, VIU, WeTV, Vision+, Vidio\n\n🎨 *Aplikasi:*\n• CapCut Pro\n• Alight Motion\n• ChatGPT Plus\n• BStation\n\nMau info detail produk mana, Kak? Tinggal ketik nama produknya aja ya! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254131,
+    "input": "menu",
+    "response": "🛍️ *PRODUK VYLOZZONE*\n\n📺 *Streaming:*\n• Netflix (mulai 15k)\n• Disney+ (mulai 17k)\n• YouTube Premium (mulai 5k)\n• Prime Video, HBO Max\n• iQIYI, VIU, WeTV, Vision+, Vidio\n\n🎨 *Aplikasi:*\n• CapCut Pro\n• Alight Motion\n• ChatGPT Plus\n• BStation\n\nMau info detail produk mana, Kak? Tinggal ketik nama produknya aja ya! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254132,
+    "input": "katalog",
+    "response": "🛍️ *PRODUK VYLOZZONE*\n\n📺 *Streaming:*\n• Netflix (mulai 15k)\n• Disney+ (mulai 17k)\n• YouTube Premium (mulai 5k)\n• Prime Video, HBO Max\n• iQIYI, VIU, WeTV, Vision+, Vidio\n\n🎨 *Aplikasi:*\n• CapCut Pro\n• Alight Motion\n• ChatGPT Plus\n• BStation\n\nMau info detail produk mana, Kak? Tinggal ketik nama produknya aja ya! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254133,
+    "input": "daftar produk",
+    "response": "🛍️ *PRODUK VYLOZZONE*\n\n📺 *Streaming:*\n• Netflix (mulai 15k)\n• Disney+ (mulai 17k)\n• YouTube Premium (mulai 5k)\n• Prime Video, HBO Max\n• iQIYI, VIU, WeTV, Vision+, Vidio\n\n🎨 *Aplikasi:*\n• CapCut Pro\n• Alight Motion\n• ChatGPT Plus\n• BStation\n\nMau info detail produk mana, Kak? Tinggal ketik nama produknya aja ya! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254134,
+    "input": "harga semua",
+    "response": "Harga produk Vylozzone bervariasi, Kak:\n\n📺 Streaming: 5k - 150k/bulan\n🎨 Aplikasi: 15k - 50k/bulan\n\nUntuk harga detail, sebutkan produk spesifik yang diminati ya! Contoh: 'netflix harga' atau 'youtube berapa?' 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254135,
+    "input": "berapa harga semua",
+    "response": "Harga produk Vylozzone bervariasi, Kak:\n\n📺 Streaming: 5k - 150k/bulan\n🎨 Aplikasi: 15k - 50k/bulan\n\nUntuk harga detail, sebutkan produk spesifik yang diminati ya! Contoh: 'netflix harga' atau 'youtube berapa?' 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254136,
+    "input": "harga produk",
+    "response": "Harga produk Vylozzone bervariasi, Kak:\n\n📺 Streaming: 5k - 150k/bulan\n🎨 Aplikasi: 15k - 50k/bulan\n\nUntuk harga detail, sebutkan produk spesifik yang diminati ya! Contoh: 'netflix harga' atau 'youtube berapa?' 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254137,
+    "input": "price list",
+    "response": "Harga produk Vylozzone bervariasi, Kak:\n\n📺 Streaming: 5k - 150k/bulan\n🎨 Aplikasi: 15k - 50k/bulan\n\nUntuk harga detail, sebutkan produk spesifik yang diminati ya! Contoh: 'netflix harga' atau 'youtube berapa?' 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254138,
+    "input": "daftar harga",
+    "response": "Harga produk Vylozzone bervariasi, Kak:\n\n📺 Streaming: 5k - 150k/bulan\n🎨 Aplikasi: 15k - 50k/bulan\n\nUntuk harga detail, sebutkan produk spesifik yang diminati ya! Contoh: 'netflix harga' atau 'youtube berapa?' 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254139,
+    "input": "trial",
+    "response": "Maaf Kak, untuk saat ini Vylozzone belum menyediakan trial gratis. Tapi semua produk bergaransi penuh! Jika ada kendala dalam masa garansi, langsung chat admin untuk bantuan ya. Harga mulai dari 5k aja kok, worth it banget! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254140,
+    "input": "free trial",
+    "response": "Maaf Kak, untuk saat ini Vylozzone belum menyediakan trial gratis. Tapi semua produk bergaransi penuh! Jika ada kendala dalam masa garansi, langsung chat admin untuk bantuan ya. Harga mulai dari 5k aja kok, worth it banget! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254141,
+    "input": "coba dulu",
+    "response": "Maaf Kak, untuk saat ini Vylozzone belum menyediakan trial gratis. Tapi semua produk bergaransi penuh! Jika ada kendala dalam masa garansi, langsung chat admin untuk bantuan ya. Harga mulai dari 5k aja kok, worth it banget! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254142,
+    "input": "gratis dulu",
+    "response": "Maaf Kak, untuk saat ini Vylozzone belum menyediakan trial gratis. Tapi semua produk bergaransi penuh! Jika ada kendala dalam masa garansi, langsung chat admin untuk bantuan ya. Harga mulai dari 5k aja kok, worth it banget! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254143,
+    "input": "test dulu",
+    "response": "Maaf Kak, untuk saat ini Vylozzone belum menyediakan trial gratis. Tapi semua produk bergaransi penuh! Jika ada kendala dalam masa garansi, langsung chat admin untuk bantuan ya. Harga mulai dari 5k aja kok, worth it banget! 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254144,
+    "input": "yang murah",
+    "response": "Produk termurah di Vylozzone:\n\n🥇 YouTube Premium Sharing: 5k/bulan (No Garansi) atau 6k/bulan (Full Garansi)\n🥈 Netflix 7 Hari: 15k\n🥉 Disney+ Sharing: 17k/bulan\n\nSemua harga sudah include pajak ya, Kak! Mau order yang mana? 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254145,
+    "input": "paling murah",
+    "response": "Produk termurah di Vylozzone:\n\n🥇 YouTube Premium Sharing: 5k/bulan (No Garansi) atau 6k/bulan (Full Garansi)\n🥈 Netflix 7 Hari: 15k\n🥉 Disney+ Sharing: 17k/bulan\n\nSemua harga sudah include pajak ya, Kak! Mau order yang mana? 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254146,
+    "input": "termurah",
+    "response": "Produk termurah di Vylozzone:\n\n🥇 YouTube Premium Sharing: 5k/bulan (No Garansi) atau 6k/bulan (Full Garansi)\n🥈 Netflix 7 Hari: 15k\n🥉 Disney+ Sharing: 17k/bulan\n\nSemua harga sudah include pajak ya, Kak! Mau order yang mana? 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254147,
+    "input": "yang paling murah",
+    "response": "Produk termurah di Vylozzone:\n\n🥇 YouTube Premium Sharing: 5k/bulan (No Garansi) atau 6k/bulan (Full Garansi)\n🥈 Netflix 7 Hari: 15k\n🥉 Disney+ Sharing: 17k/bulan\n\nSemua harga sudah include pajak ya, Kak! Mau order yang mana? 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254148,
+    "input": "harga terendah",
+    "response": "Produk termurah di Vylozzone:\n\n🥇 YouTube Premium Sharing: 5k/bulan (No Garansi) atau 6k/bulan (Full Garansi)\n🥈 Netflix 7 Hari: 15k\n🥉 Disney+ Sharing: 17k/bulan\n\nSemua harga sudah include pajak ya, Kak! Mau order yang mana? 😊",
+    "confidence": 0.95,
+    "source": "faq_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254149,
+    "input": "akun tidak bisa login",
+    "response": "Tenang, Kak. Silakan kirim nomor order dan screenshot kendalanya. Tim kami bantu proses sesuai SOP garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254150,
+    "input": "error login",
+    "response": "Tenang, Kak. Silakan kirim nomor order dan screenshot kendalanya. Tim kami bantu proses sesuai SOP garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254151,
+    "input": "expired",
+    "response": "Tenang, Kak. Silakan kirim nomor order dan screenshot kendalanya. Tim kami bantu proses sesuai SOP garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254152,
+    "input": "butuh otp",
+    "response": "Tenang, Kak. Silakan kirim nomor order dan screenshot kendalanya. Tim kami bantu proses sesuai SOP garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254153,
+    "input": "akun terkunci",
+    "response": "Tenang, Kak. Silakan kirim nomor order dan screenshot kendalanya. Tim kami bantu proses sesuai SOP garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254154,
+    "input": "curhat",
+    "response": "Maaf Kak, CS Vylozzone hanya bisa membantu seputar order, kendala, dan garansi produk digital. Mohon ajukan pertanyaan sesuai layanan ya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254155,
+    "input": "ngajak ngobrol",
+    "response": "Maaf Kak, CS Vylozzone hanya bisa membantu seputar order, kendala, dan garansi produk digital. Mohon ajukan pertanyaan sesuai layanan ya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254156,
+    "input": "iseng",
+    "response": "Maaf Kak, CS Vylozzone hanya bisa membantu seputar order, kendala, dan garansi produk digital. Mohon ajukan pertanyaan sesuai layanan ya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254157,
+    "input": "pertanyaan pribadi",
+    "response": "Maaf Kak, CS Vylozzone hanya bisa membantu seputar order, kendala, dan garansi produk digital. Mohon ajukan pertanyaan sesuai layanan ya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254158,
+    "input": "di luar produk",
+    "response": "Maaf Kak, CS Vylozzone hanya bisa membantu seputar order, kendala, dan garansi produk digital. Mohon ajukan pertanyaan sesuai layanan ya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254159,
+    "input": "netflix error",
+    "response": "Tenang, Kak. Silakan jelaskan kronologinya biar saya carikan solusinya sekalian kirim nomor order dan screenshot masalahnya",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254160,
+    "input": "incorect",
+    "response": "Tenang, Kak. Silakan jelaskan kronologinya biar saya carikan solusinya sekalian kirim nomor order dan screenshot masalahnya",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254161,
+    "input": "gabisa login netflix",
+    "response": "Tenang, Kak. Silakan jelaskan kronologinya biar saya carikan solusinya sekalian kirim nomor order dan screenshot masalahnya",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254162,
+    "input": "belum dapet email",
+    "response": "Tenang, Kak. Untuk follow-up order yang sudah dibayar, mohon kirim nomor order atau bukti transfer ke admin di wa.me/6289630375723. Tim kami akan cek status dan proses segera ya!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254163,
+    "input": "belum terima akun",
+    "response": "Tenang, Kak. Untuk follow-up order yang sudah dibayar, mohon kirim nomor order atau bukti transfer ke admin di wa.me/6289630375723. Tim kami akan cek status dan proses segera ya!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254164,
+    "input": "sudah transfer tapi",
+    "response": "Tenang, Kak. Untuk follow-up order yang sudah dibayar, mohon kirim nomor order atau bukti transfer ke admin di wa.me/6289630375723. Tim kami akan cek status dan proses segera ya!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254165,
+    "input": "kemarin beli tapi",
+    "response": "Tenang, Kak. Untuk follow-up order yang sudah dibayar, mohon kirim nomor order atau bukti transfer ke admin di wa.me/6289630375723. Tim kami akan cek status dan proses segera ya!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254166,
+    "input": "order kemarin",
+    "response": "Tenang, Kak. Untuk follow-up order yang sudah dibayar, mohon kirim nomor order atau bukti transfer ke admin di wa.me/6289630375723. Tim kami akan cek status dan proses segera ya!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254167,
+    "input": "udah 3 hari",
+    "response": "Maaf atas ketidaknyamanan ini, Kak. Untuk masalah yang sudah berlangsung lama, mohon langsung chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi masalah, dan screenshot. Tim kami akan prioritaskan penyelesaiannya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254168,
+    "input": "dari kemarin",
+    "response": "Maaf atas ketidaknyamanan ini, Kak. Untuk masalah yang sudah berlangsung lama, mohon langsung chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi masalah, dan screenshot. Tim kami akan prioritaskan penyelesaiannya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254169,
+    "input": "masalah terus",
+    "response": "Maaf atas ketidaknyamanan ini, Kak. Untuk masalah yang sudah berlangsung lama, mohon langsung chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi masalah, dan screenshot. Tim kami akan prioritaskan penyelesaiannya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254170,
+    "input": "gimana dong",
+    "response": "Maaf atas ketidaknyamanan ini, Kak. Untuk masalah yang sudah berlangsung lama, mohon langsung chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi masalah, dan screenshot. Tim kami akan prioritaskan penyelesaiannya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254171,
+    "input": "gimana nih",
+    "response": "Maaf atas ketidaknyamanan ini, Kak. Untuk masalah yang sudah berlangsung lama, mohon langsung chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi masalah, dan screenshot. Tim kami akan prioritaskan penyelesaiannya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254172,
+    "input": "mahal banget",
+    "response": "Saya paham concern Kak soal harga. Vylozzone memberikan value terbaik dengan garansi penuh dan kualitas premium. Untuk penawaran khusus atau paket hemat, bisa chat admin di wa.me/6289630375723 ya! 😊",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254173,
+    "input": "kok mahal",
+    "response": "Saya paham concern Kak soal harga. Vylozzone memberikan value terbaik dengan garansi penuh dan kualitas premium. Untuk penawaran khusus atau paket hemat, bisa chat admin di wa.me/6289630375723 ya! 😊",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254174,
+    "input": "harga kemahalan",
+    "response": "Saya paham concern Kak soal harga. Vylozzone memberikan value terbaik dengan garansi penuh dan kualitas premium. Untuk penawaran khusus atau paket hemat, bisa chat admin di wa.me/6289630375723 ya! 😊",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254175,
+    "input": "terlalu mahal",
+    "response": "Saya paham concern Kak soal harga. Vylozzone memberikan value terbaik dengan garansi penuh dan kualitas premium. Untuk penawaran khusus atau paket hemat, bisa chat admin di wa.me/6289630375723 ya! 😊",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254176,
+    "input": "dibajak",
+    "response": "🚨 Untuk masalah keamanan akun, segera chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi kejadian, dan screenshot. Tim security kami akan handle prioritas tinggi!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254177,
+    "input": "akun dicuri",
+    "response": "🚨 Untuk masalah keamanan akun, segera chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi kejadian, dan screenshot. Tim security kami akan handle prioritas tinggi!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254178,
+    "input": "kena hack",
+    "response": "🚨 Untuk masalah keamanan akun, segera chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi kejadian, dan screenshot. Tim security kami akan handle prioritas tinggi!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254179,
+    "input": "password berubah",
+    "response": "🚨 Untuk masalah keamanan akun, segera chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi kejadian, dan screenshot. Tim security kami akan handle prioritas tinggi!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254180,
+    "input": "ada yang pakai akun saya",
+    "response": "🚨 Untuk masalah keamanan akun, segera chat admin di wa.me/6289630375723 dengan detail: nomor order, kronologi kejadian, dan screenshot. Tim security kami akan handle prioritas tinggi!",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254181,
+    "input": "mau refund",
+    "response": "Untuk request refund, mohon chat admin di wa.me/6289630375723 dengan: nomor order, alasan refund, dan screenshot kendala (jika ada). Tim kami akan review sesuai kebijakan garansi ya, Kak.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254182,
+    "input": "minta refund",
+    "response": "Untuk request refund, mohon chat admin di wa.me/6289630375723 dengan: nomor order, alasan refund, dan screenshot kendala (jika ada). Tim kami akan review sesuai kebijakan garansi ya, Kak.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254183,
+    "input": "kembalikan uang",
+    "response": "Untuk request refund, mohon chat admin di wa.me/6289630375723 dengan: nomor order, alasan refund, dan screenshot kendala (jika ada). Tim kami akan review sesuai kebijakan garansi ya, Kak.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254184,
+    "input": "tidak sesuai",
+    "response": "Untuk request refund, mohon chat admin di wa.me/6289630375723 dengan: nomor order, alasan refund, dan screenshot kendala (jika ada). Tim kami akan review sesuai kebijakan garansi ya, Kak.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254185,
+    "input": "batal order",
+    "response": "Untuk request refund, mohon chat admin di wa.me/6289630375723 dengan: nomor order, alasan refund, dan screenshot kendala (jika ada). Tim kami akan review sesuai kebijakan garansi ya, Kak.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254186,
+    "input": "akun suspend",
+    "response": "Untuk masalah akun yang suspend/diblokir, langsung chat admin di wa.me/6289630375723 dengan nomor order dan screenshot. Tim kami akan bantu proses recovery atau replacement sesuai garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254187,
+    "input": "akun diblokir",
+    "response": "Untuk masalah akun yang suspend/diblokir, langsung chat admin di wa.me/6289630375723 dengan nomor order dan screenshot. Tim kami akan bantu proses recovery atau replacement sesuai garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254188,
+    "input": "akun terkunci",
+    "response": "Untuk masalah akun yang suspend/diblokir, langsung chat admin di wa.me/6289630375723 dengan nomor order dan screenshot. Tim kami akan bantu proses recovery atau replacement sesuai garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254189,
+    "input": "account suspended",
+    "response": "Untuk masalah akun yang suspend/diblokir, langsung chat admin di wa.me/6289630375723 dengan nomor order dan screenshot. Tim kami akan bantu proses recovery atau replacement sesuai garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254190,
+    "input": "kena banned",
+    "response": "Untuk masalah akun yang suspend/diblokir, langsung chat admin di wa.me/6289630375723 dengan nomor order dan screenshot. Tim kami akan bantu proses recovery atau replacement sesuai garansi.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254191,
+    "input": "scam",
+    "response": "Maaf jika ada ketidaknyamanan, Kak. Vylozzone berkomitmen memberikan layanan terbaik. Untuk keluhan serius, mohon langsung hubungi admin di wa.me/6289630375723 agar bisa ditindaklanjuti dengan proper. Terima kasih atas feedback-nya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254192,
+    "input": "penipu",
+    "response": "Maaf jika ada ketidaknyamanan, Kak. Vylozzone berkomitmen memberikan layanan terbaik. Untuk keluhan serius, mohon langsung hubungi admin di wa.me/6289630375723 agar bisa ditindaklanjuti dengan proper. Terima kasih atas feedback-nya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254193,
+    "input": "bohong",
+    "response": "Maaf jika ada ketidaknyamanan, Kak. Vylozzone berkomitmen memberikan layanan terbaik. Untuk keluhan serius, mohon langsung hubungi admin di wa.me/6289630375723 agar bisa ditindaklanjuti dengan proper. Terima kasih atas feedback-nya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254194,
+    "input": "jelek banget",
+    "response": "Maaf jika ada ketidaknyamanan, Kak. Vylozzone berkomitmen memberikan layanan terbaik. Untuk keluhan serius, mohon langsung hubungi admin di wa.me/6289630375723 agar bisa ditindaklanjuti dengan proper. Terima kasih atas feedback-nya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  },
+  {
+    "id": 1756548254195,
+    "input": "admin scam",
+    "response": "Maaf jika ada ketidaknyamanan, Kak. Vylozzone berkomitmen memberikan layanan terbaik. Untuk keluhan serius, mohon langsung hubungi admin di wa.me/6289630375723 agar bisa ditindaklanjuti dengan proper. Terima kasih atas feedback-nya.",
+    "confidence": 0.95,
+    "source": "sop_seed",
+    "timestamp": "2025-08-30T10:04:14.103Z",
+    "verified": true
+  }
+]
