@@ -1,0 +1,65 @@
+{
+  "greeting": {
+    "welcome": "Halo! Welcome to Vylozzone - Custom Text! 😊\n\nAda yang bisa dibantu?",
+    "thanks_response": "Sama-sama, Kak! 😊 Senang bisa membantu. Ada yang lain yang bisa saya bantu?",
+    "clarification_request": "Bisa dijelaskan lebih jelas, Kak? Saya siap membantu dengan pertanyaan seputar produk Vylozzone 😊"
+  },
+  "product_info": {
+    "spotify_unavailable": "Maaf Kak, untuk saat ini Spotify belum tersedia di Vylozzone. Produk music streaming yang ada: YouTube Premium (include YouTube Music). Mau info YouTube Premium?",
+    "canva_unavailable": "Maaf Kak, untuk saat ini Canva belum tersedia. Alternatif design apps yang ada: CapCut Pro untuk video editing. Mau info CapCut Pro?",
+    "product_catalog": "🛍️ *PRODUK VYLOZZONE*\n\n📺 *Streaming:*\n• Netflix (mulai 15k)\n• Disney+ (mulai 17k)\n• YouTube Premium (mulai 5k)\n• Prime Video, HBO Max\n• iQIYI, VIU, WeTV, Vision+, Vidio\n\n🎨 *Aplikasi:*\n• CapCut Pro\n• Alight Motion\n• ChatGPT Plus\n• BStation\n\nMau info detail produk mana, Kak? Tinggal ketik nama produknya aja ya! 😊",
+    "general_pricing": "Harga produk Vylozzone bervariasi, Kak:\n\n📺 Streaming: 5k - 150k/bulan\n🎨 Aplikasi: 15k - 50k/bulan\n\nUntuk harga detail, sebutkan produk spesifik yang diminati ya! Contoh: 'netflix harga' atau 'youtube berapa?' 😊"
+  },
+  "error_messages": {
+    "system_error": "Maaf, terjadi kesalahan sistem. Silakan coba lagi atau hubungi admin untuk bantuan.",
+    "invalid_input": "Mohon kirim pesan yang valid ya, Kak 😊",
+    "no_understanding": "Maaf, saya kurang paham maksudnya. Bisa dijelaskan lebih detail apa yang Kak butuhkan? 😊"
+  },
+  "success_messages": {
+    "buyer_added": "✅ *BUYER BERHASIL DITAMBAHKAN!*",
+    "claim_added": "✅ *CLAIM {type} BERHASIL DITAMBAHKAN!*",
+    "moderator_added": "✅ *MODERATOR BERHASIL DITAMBAHKAN!*"
+  },
+  "mood_responses": {
+    "angry_customer": "Maaf atas kendala yang terjadi, Kak. Mohon kirim nomor order & screenshot error, tim kami bantu follow-up sesuai SOP.",
+    "out_of_topic": "Maaf Kak, CS ini hanya menangani order, kendala, atau info garansi Vylozzone ya 🙏.",
+    "discount_inquiry": "Untuk info promo dan diskon terbaru, Kak bisa langsung chat admin di wa.me/6289630375723 ya! Admin akan kasih penawaran terbaik sesuai budget Kak 😊"
+  },
+  "attendance": {
+    "clock_in_success": "✅ *ABSEN MASUK BERHASIL*\n\n👤 *Admin:* {name}\n📅 *Tanggal:* {date}\n🕐 *Jam Masuk:* {time} WIB\n📊 *Status:* Aktif\n\nSelamat bekerja! Semangat hari ini ya! 💪\n\n💡 *Commands:*\n• istirahat - Mulai break\n• close - Selesai kerja",
+    "break_start": "🍽️ *MULAI ISTIRAHAT*\n\n👤 *Admin:* {name}\n🕐 *Jam Istirahat:* {time} WIB\n📊 *Status:* Istirahat\n\nSelamat istirahat! Jangan lupa makan ya! 😊\n\nKetik 'masuk' kalau sudah selesai istirahat",
+    "back_from_break": "💪 *KEMBALI KERJA*\n\n👤 *Admin:* {name}\n🕐 *Selesai Istirahat:* {time} WIB\n⏱️ *Durasi Istirahat:* {duration} menit\n📊 *Status:* Aktif Kembali\n\nWelcome back! Semangat lanjut kerja ya! 🚀",
+    "clock_out_success": "🏁 *SELESAI KERJA*\n\n👤 *Admin:* {name}\n📅 *Tanggal:* {date}\n🕐 *Jam Masuk:* {clockIn} WIB\n🕐 *Jam Keluar:* {clockOut} WIB\n⏱️ *Total Kerja:* {workHours}j {workMinutes}m\n🍽️ *Total Istirahat:* {breakTime} menit\n📊 *Status:* Selesai\n\nTerima kasih atas kerja kerasnya hari ini! 🙏\nIstirahat yang cukup ya! 😊"
+  },
+  "interactive_prompts": {
+    "addbuyer_step1": "🛒 *TAMBAH BUYER BARU*\n\nMari kita input data buyer step by step ya!\n\n📝 *Step 1/7: Nama User*\nSiapa nama buyer yang mau ditambahkan?\n\nContoh: John Doe\nKetik: nama lengkap buyer",
+    "addclaim_step1": "🛡️ *TAMBAH CLAIM GARANSI*\n\nMari kita input data claim step by step!\n\n📝 *Step 1/4: Nama User*\nSiapa nama user yang mengalami masalah?\n\nContoh: Jane Smith\nKetik: nama user",
+    "cancel_message": "❌ Perintah dibatalkan. Ketik 'admin menu' untuk melihat menu admin."
+  },
+  "followup_questions": {
+    "multi_package": [
+      "Ingin paket yang mana, Kak? Ada beberapa pilihan durasi nih 😊",
+      "Mau pilih yang mana? Bisa disesuaikan sama budget dan kebutuhan 😊",
+      "Tertarik sama paket yang mana? Semuanya udah include garansi penuh lho 😊",
+      "Paket mana yang cocok buat Kak? Kalau bingung bisa tanya-tanya dulu 😊",
+      "Dari pilihan di atas, mana yang sesuai budget Kak? 😊",
+      "Ada yang menarik dari paket-paket tersebut? Atau butuh penjelasan lebih detail? 😊",
+      "Pilihan mana yang pas buat Kak? Semua paket berkualitas premium kok 😊",
+      "Kira-kira cocok yang mana ya? Bisa konsultasi dulu kalau masih bingung 😊"
+    ],
+    "single_package": [
+      "Gimana, Kak? Tertarik sama {product}? 😊",
+      "Cocok gak sama kebutuhan? Mau order atau ada yang ditanyakan lagi? 😊",
+      "Bagaimana menurut Kak? Harga dan fiturnya sesuai ekspektasi? 😊",
+      "Tertarik untuk order {product}? Atau ada yang mau ditanyakan dulu? 😊"
+    ],
+    "general": [
+      "Udah ada gambaran? Kalau mau order atau ada pertanyaan tinggal bilang aja ya 😊",
+      "Kalau ada yang kurang jelas atau mau diskusi budget, langsung tanya aja Kak 😊",
+      "Semua paket udah include garansi penuh ya! Mau yang mana atau butuh konsultasi dulu? 😊",
+      "Gimana pendapat Kak? Cocok sama yang dicari atau butuh alternatif lain? 😊",
+      "Ada yang menarik? Atau mau tanya-tanya detail dulu sebelum memutuskan? 😊",
+      "Sesuai gak sama budget dan kebutuhan? Kalau ada pertanyaan langsung aja ya 😊"
+    ]
+  }
+}

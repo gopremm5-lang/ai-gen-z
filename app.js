@@ -39,6 +39,7 @@ app.use('/promo', require('./routes/promo'));
 app.use('/produk', require('./routes/produk'));
 app.use('/claim', require('./routes/claim'));
 app.use('/moderator', require('./routes/moderator'));
+app.use('/texts', require('./routes/texts'));
 
 // ================== API ENDPOINTS ==================
 // Dashboard Orders API
