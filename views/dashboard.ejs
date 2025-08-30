@@ -89,8 +89,9 @@
                             <li><hr class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/stock"><i class="fas fa-warehouse me-2"></i>Stock</a></li>
                             <li><a class="dropdown-item" href="/claim"><i class="fas fa-clipboard-list me-2"></i>Claim</a></li>
-                            <% if (user && user.role === 'admin') { %>
                             <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/templates"><i class="fas fa-comments me-2"></i>Quick Templates</a></li>
+                            <% if (user && user.role === 'admin') { %>
                             <li><a class="dropdown-item" href="/texts"><i class="fas fa-edit me-2"></i>Text Editor</a></li>
                             <% } %>
                         </ul>
@@ -318,9 +319,30 @@
             </div>
         </div>
 
-        <!-- Learning System Statistics -->
+        <!-- Business Intelligence & Learning Stats -->
         <div class="row">
-            <div class="col-12">
+            <div class="col-lg-8">
+                <div class="card">
+                    <div class="card-header bg-transparent border-0 pb-0">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-chart-line text-success me-2"></i>
+                            Real-time Business Intelligence
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="business-insights-container">
+                            <div class="text-center">
+                                <div class="spinner-border text-success" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading business insights...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
                 <div class="card">
                     <div class="card-header bg-transparent border-0 pb-0">
                         <h5 class="card-title mb-0">
@@ -335,6 +357,30 @@
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
                                 <p class="mt-2">Loading learning statistics...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Alerts -->
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header bg-transparent border-0 pb-0">
+                        <h5 class="card-title mb-0">
+                            <i class="fas fa-bell text-warning me-2"></i>
+                            Live Business Alerts
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div id="business-alerts-container">
+                            <div class="text-center">
+                                <div class="spinner-border text-warning" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                                <p class="mt-2">Loading business alerts...</p>
                             </div>
                         </div>
                     </div>
@@ -481,6 +527,157 @@
                     </div>
                 `;
             });
+
+        // Load Business Insights
+        function loadBusinessInsights() {
+            fetch('/api/business-insights')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('business-insights-container');
+                    
+                    if (data.error) {
+                        container.innerHTML = `
+                            <div class="alert alert-warning">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                Business insights loading...
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    const insights = data.insights?.daily || {};
+                    const conversationAnalytics = data.conversationAnalytics || {};
+                    
+                    container.innerHTML = `
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="h4 text-success">${insights.activeCustomers || 0}</div>
+                                    <small class="text-muted">Active Customers</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="h4 text-primary">${insights.productInquiries || 0}</div>
+                                    <small class="text-muted">Product Inquiries</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="h4 text-info">${insights.ordersToday || 0}</div>
+                                    <small class="text-muted">Orders Today</small>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="text-center">
+                                    <div class="h4 text-warning">${insights.conversionRate || 0}%</div>
+                                    <small class="text-muted">Conversion Rate</small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        ${Object.keys(insights.topProducts || {}).length > 0 ? `
+                        <hr>
+                        <div class="row">
+                            <div class="col-12">
+                                <h6 class="mb-2">🔥 Top Products Today:</h6>
+                                ${Object.entries(insights.topProducts).map(([product, count]) => `
+                                    <span class="badge bg-primary me-2 mb-1">${product}: ${count}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        ` : ''}
+                        
+                        <div class="row mt-3">
+                            <div class="col-12">
+                                <small class="text-muted">
+                                    <i class="fas fa-sync me-1"></i>
+                                    Last updated: ${new Date().toLocaleTimeString('id-ID')}
+                                </small>
+                            </div>
+                        </div>
+                    `;
+                })
+                .catch(error => {
+                    console.error('Error loading business insights:', error);
+                    document.getElementById('business-insights-container').innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Failed to load business insights
+                        </div>
+                    `;
+                });
+        }
+
+        // Load Business Alerts
+        function loadBusinessAlerts() {
+            fetch('/api/business-alerts')
+                .then(response => response.json())
+                .then(data => {
+                    const container = document.getElementById('business-alerts-container');
+                    
+                    if (data.error || !data.alerts || data.alerts.length === 0) {
+                        container.innerHTML = `
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                No active alerts - all systems normal
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    let html = '';
+                    const recentAlerts = data.alerts.slice(-5); // Show last 5 alerts
+                    
+                    recentAlerts.forEach(alert => {
+                        const severityClass = {
+                            'critical': 'danger',
+                            'warning': 'warning', 
+                            'info': 'info'
+                        }[alert.severity] || 'secondary';
+                        
+                        const severityIcon = {
+                            'critical': 'exclamation-triangle',
+                            'warning': 'exclamation-circle',
+                            'info': 'info-circle'
+                        }[alert.severity] || 'bell';
+                        
+                        html += `
+                            <div class="alert alert-${severityClass} mb-2">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div>
+                                        <strong><i class="fas fa-${severityIcon} me-1"></i>${alert.title}</strong><br>
+                                        <small>${alert.message}</small>
+                                        ${alert.suggestion ? `<br><em class="text-muted">💡 ${alert.suggestion}</em>` : ''}
+                                    </div>
+                                    <small class="text-muted">${new Date(alert.timestamp).toLocaleTimeString('id-ID')}</small>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    container.innerHTML = html;
+                })
+                .catch(error => {
+                    console.error('Error loading business alerts:', error);
+                    document.getElementById('business-alerts-container').innerHTML = `
+                        <div class="alert alert-danger">
+                            <i class="fas fa-exclamation-circle me-2"></i>
+                            Failed to load business alerts
+                        </div>
+                    `;
+                });
+        }
+
+        // Load all enhanced features
+        loadBusinessInsights();
+        loadBusinessAlerts();
+        
+        // Auto refresh business data every 2 minutes
+        setInterval(() => {
+            loadBusinessInsights();
+            loadBusinessAlerts();
+        }, 2 * 60 * 1000);
     </script>
 </body>
 </html>

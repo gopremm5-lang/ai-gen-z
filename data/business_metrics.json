@@ -1,0 +1,22 @@
+{
+  "daily": {
+    "2025-08-30": {
+      "date": "2025-08-30",
+      "timestamp": "2025-08-30T11:35:21.110Z",
+      "activeCustomers": 0,
+      "totalCustomers": 0,
+      "newCustomersToday": 0,
+      "topProducts": {},
+      "productInquiries": 0,
+      "ordersToday": 0,
+      "revenueToday": 0,
+      "claimsToday": 0,
+      "customerMood": {},
+      "activeAdmins": {},
+      "avgResponseTime": 19,
+      "conversionRate": 0
+    }
+  },
+  "weekly": {},
+  "monthly": {}
+}

@@ -120,6 +120,82 @@ app.get('/api/attendance/summary', requireLogin, async (req, res) => {
   }
 });
 
+// Business Intelligence API
+app.get('/api/business-insights', requireLogin, async (req, res) => {
+  try {
+    const { businessIntelligence } = require('./lib/businessIntelligence');
+    const insights = await businessIntelligence.getInsightsData();
+    res.json(insights);
+  } catch (error) {
+    console.error('Business insights API error:', error);
+    res.json({ error: 'Failed to load business insights' });
+  }
+});
+
+app.get('/api/business-alerts', requireLogin, async (req, res) => {
+  try {
+    const { businessIntelligence } = require('./lib/businessIntelligence');
+    const alerts = await businessIntelligence.getAlertsData();
+    res.json(alerts);
+  } catch (error) {
+    console.error('Business alerts API error:', error);
+    res.json({ error: 'Failed to load business alerts' });
+  }
+});
+
+// Customer Insights API (for admin when handling customer)
+app.get('/api/customer-insights/:customerNumber', requireLogin, async (req, res) => {
+  try {
+    const { conversationContext } = require('./lib/conversationContext');
+    const customerNumber = req.params.customerNumber;
+    const insights = conversationContext.getCustomerInsights(customerNumber + '@s.whatsapp.net');
+    res.json(insights);
+  } catch (error) {
+    console.error('Customer insights API error:', error);
+    res.json({ error: 'Failed to load customer insights' });
+  }
+});
+
+// Admin Templates API
+app.get('/api/admin-templates', requireLogin, async (req, res) => {
+  try {
+    const { adminTemplates } = require('./lib/adminTemplates');
+    const templates = adminTemplates.getAllTemplates();
+    res.json(templates);
+  } catch (error) {
+    console.error('Admin templates API error:', error);
+    res.json({ error: 'Failed to load admin templates' });
+  }
+});
+
+app.get('/api/admin-templates/suggestions/:customerNumber', requireLogin, async (req, res) => {
+  try {
+    const { adminTemplates } = require('./lib/adminTemplates');
+    const customerNumber = req.params.customerNumber;
+    const suggestions = await adminTemplates.getSuggestedTemplates(customerNumber + '@s.whatsapp.net');
+    res.json(suggestions);
+  } catch (error) {
+    console.error('Template suggestions API error:', error);
+    res.json({ error: 'Failed to load template suggestions' });
+  }
+});
+
+// Quick Templates Dashboard
+app.get('/templates', requireLogin, async (req, res) => {
+  try {
+    const toast = req.session.toast || null;
+    delete req.session.toast;
+    
+    res.render('admin_templates', { 
+      toast: toast,
+      user: req.session.user || { username: 'Admin', role: 'admin' }
+    });
+  } catch (error) {
+    console.error('Templates page error:', error);
+    res.status(500).render('404');
+  }
+});
+
 // Attendance Dashboard Page (Owner Only)
 app.get('/attendance', requireLogin, async (req, res) => {
   try {
